@@ -22,6 +22,7 @@ public class Chopstick : MonoBehaviour
 
     float main_axis_height = 1f; //왼/오 젓가락 스프라이트의 길이 중간점을 기준으로 한 축 높이입니다. 실제 젓가락을 잡을 때 중간점보다는 살짝 위로 잡으므로 기본값은 1입니다. (= 각 스프라이트는 각 축의 자식이므로 왼/오 젓가락의 y position은 -1로 나타남)
 
+    float main_axis_width = 1f; //왼/오 젓가락 스프라이트의 너비입니다. 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,7 +39,12 @@ public class Chopstick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 mouse_screen = Input.mousePosition;
+        Vector3 mouse_world = Camera.main.ScreenToWorldPoint(mouse_screen);
+        transform.position = new Vector3(mouse_world.x,mouse_world.y, 0f);
+
+        left_stick.ReturnToOriginalPosition(main_axis_height); // 왼쪽 젓가락을 원래 위치로 되돌리는 함수 호출
+        right_stick.ReturnToOriginalPosition(main_axis_height); // 오른쪽 젓가락을 원래 위치로 되돌리는 함수 호출
 
         if (Input.GetMouseButton(0))
         {
@@ -70,9 +76,10 @@ public class Chopstick : MonoBehaviour
         }
         else
         {
-            if (stick_squeeze_angle < angle_on_collision)
+            if (stick_squeeze_angle <= angle_on_collision)
             {
                 is_locked = false; // 만약 stick_squeeze_angle이 angle_on_collision보다 작아지면 is_locked를 false로 설정합니다. 즉, 물체와 충돌하지 않으면 젓가락은 다시 움직일 수 있습니다.
+                angle_on_collision = 0f; // angle_on_collision을 0으로 초기화합니다.
             }
         }
     }
