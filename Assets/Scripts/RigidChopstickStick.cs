@@ -65,11 +65,11 @@ public class RigidChopstickStick : MonoBehaviour
 
         if (bef_x > 0.01f || bef_x < -0.01f || bef_y > 0.01f || bef_y < -0.01f) // 목표 위치와 현재 위치의 차이가 0.01보다 크면
         {
-            rb2d.velocity = velocity; // 속도를 설정합니다.
+            rb2d.linearVelocity = velocity; // 속도를 설정합니다.
         }
         else
         {
-            rb2d.velocity = Vector2.zero; // 목표 위치에 도달하면 속도를 0으로 설정합니다.
+            rb2d.linearVelocity = Vector2.zero; // 목표 위치에 도달하면 속도를 0으로 설정합니다.
         }
     }
 }
