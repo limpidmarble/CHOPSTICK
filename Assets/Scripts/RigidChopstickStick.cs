@@ -15,7 +15,7 @@ public class RigidChopstickStick : MonoBehaviour
 
     Rigidbody2D rb2d;
 
-    List<Collision2D> collisions = new List<Collision2D>(); //이 젓가락에 충돌한 물체들의 리스트입니다. 이 리스트에는 충돌이 시작되면 추가되고, 충돌이 끝나면 제거됨
+    List<GameObject> collidingObjects = new List<GameObject>(); //이 젓가락에 충돌한 물체들의 리스트입니다. 이 리스트에는 충돌이 시작되면 추가되고, 충돌이 끝나면 제거됨
 
     public float return_speed = 50f; //원래 위치로 돌아가는 속도입니다.
     Vector3 velocity = Vector3.zero;
@@ -38,7 +38,8 @@ public class RigidChopstickStick : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Target"))
         {
-            collisions.Add(collision); // 충돌이 시작되면 collisions 리스트에 추가합니다.
+            if (!collidingObjects.Contains(collision.gameObject))
+            collidingObjects.Add(collision.gameObject);
         }
         is_colliding = true;
     }
@@ -51,7 +52,7 @@ public class RigidChopstickStick : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Target"))
         {
-            collisions.Remove(collision); // 충돌이 끝나면 collisions 리스트에서 제거합니다.
+            collidingObjects.Remove(collision.gameObject);
         }
         is_colliding = false;
 
