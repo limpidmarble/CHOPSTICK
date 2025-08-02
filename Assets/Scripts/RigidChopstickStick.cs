@@ -9,6 +9,8 @@ public class RigidChopstickStick : MonoBehaviour
 
     public Transform stick_target; // 젓가락이 있어야 할 목표 위치 오브젝트의 Transform을 저장하는 변수입니다.
 
+    public float stick_height;
+
     Vector2 offset;
 
     Rigidbody2D rb2d;
@@ -22,6 +24,9 @@ public class RigidChopstickStick : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+
+        stick_height = GetComponent<Collider2D>().bounds.size.y; // 젓가락의 높이를 Collider2D의 bounds에서 가져옵니다.
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)

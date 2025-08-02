@@ -10,20 +10,36 @@ public class RigidChopstick : MonoBehaviour
     public float stick_squeeze_angle_right;
     public float stick_squeeze_min_angle = -3f; // 최소 앵글이자 기본 앵글 값입니다.
     float stick_squeeze_max_angle = 90f; // 최대 앵글 값입니다.
-    public float stick_squeeze_speed = 20f; // 젓가락을 오므리는 속도입니다. 단위는 도/초입니다. 90f는 1초에 90도 회전합니다.                          
+    public float stick_squeeze_speed = 50f; // 젓가락을 오므리는 속도입니다. 단위는 도/초입니다. 90f는 1초에 90도 회전합니다.                          
     public float angle_on_collision_left; // 양 젓가락이 모두 물체와 닿아 더 이상 기울어질 수 없을 때의 앵글 값을 저장하는 변수입니다. 이 변수값과, 더 올라간 stick_squeeze_angle값과의 차이를 구해 힘값을 도출합니다.
     public float angle_on_collision_right;
     public bool is_locked = false; // 젓가락이 서로 맞닿거나 물체와 충돌해 더 이상 움직이지 못할 때 true로 설정됩니다.(물체와 충돌하지 않으면 false로 돌아갑니다.)
 
-    Transform stick_left_axis; // 왼쪽 젓가락 축의 Transform을 저장하는 변수입니다.
+    Transform stick_left_axis; // 왼쪽 젓가락 축의 Transform을 저장하는 변수입니다.s
     Transform stick_right_axis; // 오른쪽 젓가락 축의 Transform을 저장하는 변수입니다.
     Transform left_target; // 이 변수는 ChopstickLeftTarget의 RigidChopstickTarget 컴포넌트를 참조합니다.
     Transform right_target; // 이 변수는 ChopstickRightTarget의 RigidChopstickTarget 컴포넌트를 참조합니다.
     public RigidChopstickStick left_stick; // 이 변수는 ChopstickLeft의 RigidChopstickStick 컴포넌트를 참조합니다.
     public RigidChopstickStick right_stick; // 이 변수는 ChopstickRight의 RigidChopstickStick 컴포넌트를 참조합니다.
 
-    float main_axis_height = 1f; //왼/오 젓가락 스프라이트의 길이 중간점을 기준으로 한 축 높이입니다. 실제 젓가락을 잡을 때 중간점보다는 살짝 위로 잡으므로 기본값은 1입니다. (= 각 스프라이트는 각 축의 자식이므로 왼/오 젓가락의 y position은 -1로 나타남)
-    float main_axis_width = 2f; //왼/오 젓가락 스프라이트의 너비입니다. 
+    public float main_axis_height = 1f; //왼/오 젓가락 스프라이트의 길이 중간점을 기준으로 한 축 높이입니다. 실제 젓가락을 잡을 때 중간점보다는 살짝 위로 잡으므로 기본값은 1입니다. (= 각 스프라이트는 각 축의 자식이므로 왼/오 젓가락의 y position은 -1로 나타남)
+
+    float main_axis_height_max = 2f; //왼/오 젓가락 스프라이트의 길이 중간점을 기준으로 한 축 높이의 최대값입니다.
+
+    float main_axis_height_min = -2f; //왼/오 젓가락 스프라이트의 길이 중간점을 기준으로 한 축 높이의 최소값입니다.
+
+    public float main_axis_height_change_speed = 0.1f; //왼/오 젓가락 스프라이트의 길이 중간점을 기준으로 한 축 높이를 변경하는 속도입니다. (단위: 초당 변화량)
+
+    public float main_axis_width = 2f; //왼/오 젓가락 스프라이트의 너비입니다. 
+
+    float main_axis_width_max = 3f; //왼/오 젓가락 스프라이트의 너비의 최대값입니다. (왼쪽 젓가락은 왼쪽으로, 오른쪽 젓가락은 오른쪽으로 이동해야 하므로 양수로 설정합니다.)
+
+    float main_axis_width_min = 1f;
+
+    public float main_axis_width_change_speed = 0.1f; //왼/오 젓가락 스프라이트의 너비를 변경하는 속도입니다. (단위: 초당 변화량)
+
+    bool axis_width_increased = false; // 왼/오 젓가락 스프라이트의 너비가 증가했는지 여부를 나타내는 변수입니다. true면 증가했고, false면 감소했습니다.
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,6 +48,9 @@ public class RigidChopstick : MonoBehaviour
         stick_right_axis = transform.Find("ChopstickRightAxis"); //이하 동일
         left_target = transform.Find("ChopstickLeftAxis/ChopstickLeftTarget"); // 왼쪽 젓가락 타겟 오브젝트의 RigidChopstickTarget 컴포넌트를 가져옵니다.
         right_target = transform.Find("ChopstickRightAxis/ChopstickRightTarget"); // 오른쪽 젓가락 타겟 오브젝트의 RigidChopstickTarget 컴포넌트를 가져옵니다.
+
+        main_axis_height_max = left_stick.stick_height / 2f; // 왼쪽 젓가락의 높이의 절반을 main_axis_height_max로 설정합니다. (왼쪽 젓가락의 높이는 오른쪽 젓가락과 동일하므로 왼쪽 젓가락의 높이를 사용합니다.)
+        main_axis_height_min = -left_stick.stick_height / 2f; // same logic as above, but for minimum height (AI가 왜 영어랑 한국어를 섞어서 쓰는지?)
 
         stick_squeeze_angle_left = stick_squeeze_min_angle; // 젓가락의 기본 앵글은 stick_squeeze_min_angle로 설정
         stick_squeeze_angle_right = stick_squeeze_min_angle;
@@ -44,13 +63,10 @@ public class RigidChopstick : MonoBehaviour
         Vector3 mouse_world = Camera.main.ScreenToWorldPoint(mouse_screen);
         transform.position = new Vector3(mouse_world.x, mouse_world.y, 0f);
 
-        stick_left_axis.localPosition = new Vector3(-main_axis_width / 2f, -main_axis_height, 0f); // 왼쪽 젓가락 축의 위치를 설정합니다. 왼쪽 젓가락은 왼쪽으로 이동해야 하므로 x좌표는 -main_axis_width / 2f로 설정합니다.
-        stick_right_axis.localPosition = new Vector3(main_axis_width / 2f, -main_axis_height, 0f); // 오른쪽 젓가락 축의 위치를 설정합니다. 오른쪽 젓가락은 오른쪽으로 이동해야 하므로 x좌표는 main_axis_width / 2f로 설정합니다.
-
 
         if (Input.GetMouseButton(0))
         {
-            stick_squeeze_angle_left += stick_squeeze_speed * Time.deltaTime; // 마우스 왼쪽 버튼을 누르고 있으면 stick_squeeze_angle이 초당 stick_squeeze_speed만큼 증가합니다. 
+            stick_squeeze_angle_left += stick_squeeze_speed * Time.fixedDeltaTime; // 마우스 왼쪽 버튼을 누르고 있으면 stick_squeeze_angle이 초당 stick_squeeze_speed만큼 증가합니다. 
             if (stick_squeeze_angle_left > stick_squeeze_max_angle) // stick_squeeze_angle이 최대를 넘어가면
             {
                 stick_squeeze_angle_left = stick_squeeze_max_angle; // 최대로 고정합니다.
@@ -59,7 +75,7 @@ public class RigidChopstick : MonoBehaviour
         else
         {
             if (stick_squeeze_angle_left > stick_squeeze_min_angle) //stick_squeeze_angle이 최소보다 크면
-                stick_squeeze_angle_left -= stick_squeeze_speed * Time.deltaTime; // 마우스 왼쪽 버튼을 누르고 있지 않으면 stick_squeeze_angle이 초당 stick_squeeze_speed 만큼 감소합니다.
+                stick_squeeze_angle_left -= stick_squeeze_speed * Time.fixedDeltaTime; // 마우스 왼쪽 버튼을 누르고 있지 않으면 stick_squeeze_angle이 초당 stick_squeeze_speed 만큼 감소합니다.
             if (stick_squeeze_angle_left < stick_squeeze_min_angle) // stick_squeeze_angle이 최소보다 작아지면
             {
                 stick_squeeze_angle_left = stick_squeeze_min_angle; // 최솟값으로 고정합니다.
@@ -68,7 +84,7 @@ public class RigidChopstick : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            stick_squeeze_angle_right += stick_squeeze_speed * Time.deltaTime; // 마우스 왼쪽 버튼을 누르고 있으면 stick_squeeze_angle이 초당 stick_squeeze_speed만큼 증가합니다. 
+            stick_squeeze_angle_right += stick_squeeze_speed * Time.fixedDeltaTime; // 마우스 왼쪽 버튼을 누르고 있으면 stick_squeeze_angle이 초당 stick_squeeze_speed만큼 증가합니다. 
             if (stick_squeeze_angle_right > stick_squeeze_max_angle) // stick_squeeze_angle이 최대를 넘어가면
             {
                 stick_squeeze_angle_right = stick_squeeze_max_angle; // 최대로 고정합니다.
@@ -77,12 +93,49 @@ public class RigidChopstick : MonoBehaviour
         else
         {
             if (stick_squeeze_angle_right > stick_squeeze_min_angle) //stick_squeeze_angle이 최소보다 크면
-                stick_squeeze_angle_right -= stick_squeeze_speed * Time.deltaTime; // 마우스 왼쪽 버튼을 누르고 있지 않으면 stick_squeeze_angle이 초당 stick_squeeze_speed 만큼 감소합니다.
+                stick_squeeze_angle_right -= stick_squeeze_speed * Time.fixedDeltaTime; // 마우스 왼쪽 버튼을 누르고 있지 않으면 stick_squeeze_angle이 초당 stick_squeeze_speed 만큼 감소합니다.
             if (stick_squeeze_angle_right < stick_squeeze_min_angle) // stick_squeeze_angle이 최소보다 작아지면
             {
                 stick_squeeze_angle_right = stick_squeeze_min_angle; // 최솟값으로 고정합니다.
             }
         }
+
+        if (Input.GetKey(KeyCode.UpArrow)) // 위쪽 화살표 키를 누르면
+        {
+            main_axis_height -= main_axis_height_change_speed;
+            if (main_axis_height < main_axis_height_min) // main_axis_height가 최소를 넘어가면
+            {
+                main_axis_height = main_axis_height_min; // 최솟값으로 고정합니다.
+            }
+        }
+        if (Input.GetKey(KeyCode.DownArrow)) // 아래쪽 화살표 키를 누르면
+        {
+            main_axis_height += main_axis_height_change_speed;
+            if (main_axis_height > main_axis_height_max) // main_axis_height가 최대를 넘어가면
+            {
+                main_axis_height = main_axis_height_max; // 최대로 고정합니다.
+            }
+        }
+        if (Input.GetKey(KeyCode.RightArrow)) // 오른쪽 화살표 키를 누르면
+        {
+            main_axis_width += main_axis_width_change_speed;
+            if (main_axis_width > main_axis_width_max) // main_axis_width가 최대를 넘어가면
+            {
+                main_axis_width = main_axis_width_max; // 최대로 고정합니다.
+            }
+            axis_width_increased = true; // main_axis_width가 증가했음을 표시합니다.
+        }
+        if (Input.GetKey(KeyCode.LeftArrow) && !is_locked) // 왼쪽 화살표 키를 누르면 (is_locked가 false일 때만 작동합니다. 락걸렸을 때는 )
+        {
+            main_axis_width -= main_axis_width_change_speed;
+            if (main_axis_width < main_axis_width_min) // main_axis_width가 최소를 넘어가면
+            {
+                main_axis_width = main_axis_width_min; // 최솟값으로 고정합니다.
+            }
+        }
+
+        stick_left_axis.localPosition = new Vector3(-main_axis_width / 2f, -main_axis_height, 0f); // 왼쪽 젓가락 축의 위치를 설정합니다. 왼쪽 젓가락은 왼쪽으로 이동해야 하므로 x좌표는 -main_axis_width / 2f로 설정합니다.
+        stick_right_axis.localPosition = new Vector3(main_axis_width / 2f, -main_axis_height, 0f); // 오른쪽 젓가락 축의 위치를 설정합니다. 오른쪽 젓가락은 오른쪽으로 이동해야 하므로 x좌표는 main_axis_width / 2f로 설정합니다.
 
         if (!is_locked)
         {
@@ -100,24 +153,54 @@ public class RigidChopstick : MonoBehaviour
         }
         else
         {
-            if (angle_on_collision_left == stick_squeeze_min_angle && angle_on_collision_right == stick_squeeze_min_angle) // 만약 angle_on_collision이 stick_squeeze_min_angle과 같다면
+            left_stick.ToTargetPosition(angle_on_collision_left);
+            right_stick.ToTargetPosition(-angle_on_collision_right); // 왼쪽, 오른쪽 젓가락을 목표 위치로 이동시키는 함수 호출
+
+            if (angle_on_collision_left == stick_squeeze_min_angle && angle_on_collision_right == stick_squeeze_min_angle)
             {
                 is_locked = false; // is_locked를 false로 설정합니다. 즉, 물체와 충돌하지 않으면 젓가락은 다시 움직일 수 있습니다.
                 angle_on_collision_left = 0f; // angle_on_collision을 0으로 초기화합니다.
                 angle_on_collision_right = 0f; // angle_on_collision을 0으로 초기화합니다.
             }
-            if (stick_squeeze_angle_left <= angle_on_collision_left)
+            else if (angle_on_collision_left != stick_squeeze_min_angle && angle_on_collision_right != stick_squeeze_min_angle)
             {
-                is_locked = false; // 만약 stick_squeeze_angle이 angle_on_collision보다 작아지면 is_locked를 false로 설정합니다. 즉, 물체와 충돌하지 않으면 젓가락은 다시 움직일 수 있습니다.
+                if (!Input.GetMouseButton(0) || !Input.GetMouseButton(1)) // 마우스 왼쪽 버튼이나 오른쪽 버튼을 떼면
+                {
+                    is_locked = false;
+                    stick_squeeze_angle_left = angle_on_collision_left -1; // 젓가락의 앵글을 angle_on_collision으로 되돌립니다. -1을 해주는 이유는 angle_on_collision 값 자체가 충돌할 때 값이라 이걸 그대로 쓰면 다음 프레임에 위의 락 발동이 다시 걸려버리기 때문입니다.
+                    stick_squeeze_angle_right = angle_on_collision_right -1; // 젓가락의 앵글을 angle_on_collision으로 되돌립니다.
+                }
+                if (stick_squeeze_angle_left < angle_on_collision_left || stick_squeeze_angle_right < angle_on_collision_right)
+                {
+                    is_locked = false; // 만약 젓가락이 물체와 충돌하지 않으면 is_locked를 false로 설정합니다.
+                }
             }
-            if (stick_squeeze_angle_right <= angle_on_collision_right)
+            else if (angle_on_collision_left == stick_squeeze_min_angle)
             {
-                is_locked = false; // 만약 stick_squeeze_angle이 angle_on_collision보다 작아지면 is_locked를 false로 설정합니다. 즉, 물체와 충돌하지 않으면 젓가락은 다시 움직일 수 있습니다.
+                if (!Input.GetMouseButton(1)) // 마우스 왼쪽 버튼을 떼면
+                {
+                    is_locked = false;
+                    stick_squeeze_angle_left = angle_on_collision_left -1; // 젓가락의 앵글을 angle_on_collision으로 되돌립니다.
+                    stick_squeeze_angle_right = angle_on_collision_right -1;
+                }
             }
-
-            left_stick.ToTargetPosition(angle_on_collision_left);
-            right_stick.ToTargetPosition(-angle_on_collision_right); // 왼쪽, 오른쪽 젓가락을 목표 위치로 이동시키는 함수 호출
+            else if (angle_on_collision_right == stick_squeeze_min_angle)
+                if (!Input.GetMouseButton(0)) // 마우스 오른쪽 버튼을 떼면
+                {
+                    is_locked = false;
+                    stick_squeeze_angle_right = angle_on_collision_right -1; // 젓가락의 앵글을 angle_on_collision으로 되돌립니다.
+                    stick_squeeze_angle_left = angle_on_collision_left -1;
+                }
+                
+            if (axis_width_increased)
+            {
+                is_locked = false; // is_locked상태에서 젓가락 너비를 증가했을 시 젓가락 두 짝이 떨어진 채로 고정되는 것을 방지.
+                stick_squeeze_angle_left = angle_on_collision_left; // 
+                stick_squeeze_angle_right = angle_on_collision_right; // 젓가락이 서로 맞닿아 더 이상 움직이지 못하는 상태에서 너비를 증가했을 때, 젓가락의 앵글을 angle_on_collision으로 되돌립니다.
+            }
         }
+
+        axis_width_increased = false; // 매 프레임마다 axis_width_increased를 false로 초기화합니다. 이는 왼/오 젓가락 스프라이트의 너비가 증가했는지 여부를 나타내는 변수입니다
 
     }
 }
