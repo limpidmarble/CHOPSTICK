@@ -17,12 +17,15 @@ public class RigidChopstickStick : MonoBehaviour
 
     List<GameObject> collidingObjects = new List<GameObject>(); //이 젓가락에 충돌한 물체들의 리스트입니다. 이 리스트에는 충돌이 시작되면 추가되고, 충돌이 끝나면 제거됨
 
-    public float return_speed = 50f; //원래 위치로 돌아가는 속도입니다.
+    public float return_speed = 2000f; //원래 위치로 돌아가는 속도입니다.
     Vector3 velocity = Vector3.zero;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        return_speed = 1000f; // 초기 속도를 설정합니다.
+
+
         rb2d = GetComponent<Rigidbody2D>();
 
         stick_height = GetComponent<Collider2D>().bounds.size.y; // 젓가락의 높이를 Collider2D의 bounds에서 가져옵니다.
@@ -63,7 +66,7 @@ public class RigidChopstickStick : MonoBehaviour
     {
         Vector3 target_position = stick_target.position; // 돌아가는 목표 위치입니다.
         Vector3 direction = target_position - transform.position;
-        velocity = direction * return_speed * Time.deltaTime;
+        velocity = direction * return_speed * Time.fixedDeltaTime;
         float bef_x = transform.position.x - target_position.x;
         float bef_y = transform.position.y - target_position.y;
 

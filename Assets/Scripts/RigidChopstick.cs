@@ -151,7 +151,8 @@ public class RigidChopstick : MonoBehaviour
         if (!is_locked)
         {
             left_stick.ToTargetPosition(stick_squeeze_angle_left);
-                right_stick.ToTargetPosition(-stick_squeeze_angle_right); // 왼쪽, 오른쪽 젓가락을 목표 위치로 이동시키는 함수 호출
+            right_stick.ToTargetPosition(-stick_squeeze_angle_right); // 왼쪽, 오른쪽 젓가락을 목표 위치로 이동시키는 함수 호출
+            
             if (left_stick.is_touching_stick && right_stick.is_touching_stick) // 왼쪽, 오른쪽 젓가락이 닿아있으면
             {
                 is_locked = true; // 젓가락이 서로 맞닿아 더 이상 움직이지 못하는 상태로 설정합니다.
@@ -164,7 +165,7 @@ public class RigidChopstick : MonoBehaviour
             {
                 stick_left_axis.localRotation = Quaternion.Euler(0, 0, stick_squeeze_angle_left); // 왼쪽 젓가락 축의 회전값을 stick_squeeze_angle로 설정합니다.
                 stick_right_axis.localRotation = Quaternion.Euler(0, 0, -stick_squeeze_angle_right); // 오른쪽 젓가락 축의 회전값을 -stick_squeeze_angle로 설정합니다. -인 이유는 오른쪽 젓가락이 왼쪽 젓가락과 반대 방향으로 회전해야 오므려지기 때문입니다.
-                
+
             }
 
         }
