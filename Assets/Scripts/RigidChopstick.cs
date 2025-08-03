@@ -41,7 +41,7 @@ public class RigidChopstick : MonoBehaviour
 
     public float main_axis_width = 2f; //왼/오 젓가락 스프라이트의 너비입니다. 
 
-    float main_axis_width_max = 3f; //왼/오 젓가락 스프라이트의 너비의 최대값입니다. (왼쪽 젓가락은 왼쪽으로, 오른쪽 젓가락은 오른쪽으로 이동해야 하므로 양수로 설정합니다.)
+    float main_axis_width_max = 4f; //왼/오 젓가락 스프라이트의 너비의 최대값입니다. (왼쪽 젓가락은 왼쪽으로, 오른쪽 젓가락은 오른쪽으로 이동해야 하므로 양수로 설정합니다.)
 
     float main_axis_width_min = 2f;
 
@@ -88,7 +88,7 @@ public class RigidChopstick : MonoBehaviour
         else
         {
             if (stick_squeeze_angle_left > stick_squeeze_min_angle) //stick_squeeze_angle이 최소보다 크면
-                stick_squeeze_angle_left -= stick_squeeze_speed * Time.fixedDeltaTime; // 마우스 왼쪽 버튼을 누르고 있지 않으면 stick_squeeze_angle이 초당 stick_squeeze_speed 만큼 감소합니다.
+                stick_squeeze_angle_left -= stick_squeeze_speed * 2 * Time.fixedDeltaTime; // 마우스 왼쪽 버튼을 누르고 있지 않으면 stick_squeeze_angle이 초당 2 * stick_squeeze_speed 만큼 감소합니다.
             if (stick_squeeze_angle_left < stick_squeeze_min_angle) // stick_squeeze_angle이 최소보다 작아지면
             {
                 stick_squeeze_angle_left = stick_squeeze_min_angle; // 최솟값으로 고정합니다.
@@ -106,7 +106,7 @@ public class RigidChopstick : MonoBehaviour
         else
         {
             if (stick_squeeze_angle_right > stick_squeeze_min_angle) //stick_squeeze_angle이 최소보다 크면
-                stick_squeeze_angle_right -= stick_squeeze_speed * Time.fixedDeltaTime; // 마우스 왼쪽 버튼을 누르고 있지 않으면 stick_squeeze_angle이 초당 stick_squeeze_speed 만큼 감소합니다.
+                stick_squeeze_angle_right -= stick_squeeze_speed * 2 * Time.fixedDeltaTime; // 마우스 왼쪽 버튼을 누르고 있지 않으면 stick_squeeze_angle이 초당 stick_squeeze_speed 만큼 감소합니다.
             if (stick_squeeze_angle_right < stick_squeeze_min_angle) // stick_squeeze_angle이 최소보다 작아지면
             {
                 stick_squeeze_angle_right = stick_squeeze_min_angle; // 최솟값으로 고정합니다.
@@ -129,7 +129,7 @@ public class RigidChopstick : MonoBehaviour
                 main_axis_height = main_axis_height_max; // 최대로 고정합니다.
             }
         }
-        if (Input.GetKey(KeyCode.RightArrow)) // 오른쪽 화살표 키를 누르면
+        if (Input.GetKey(KeyCode.RightArrow) && !is_locked) // 오른쪽 화살표 키를 누르면
         {
             main_axis_width += main_axis_width_change_speed;
             if (main_axis_width > main_axis_width_max) // main_axis_width가 최대를 넘어가면
@@ -138,7 +138,7 @@ public class RigidChopstick : MonoBehaviour
             }
             axis_width_increased = true; // main_axis_width가 증가했음을 표시합니다.
         }
-        if (Input.GetKey(KeyCode.LeftArrow)) // 왼쪽 화살표 키를 누르면 (is_locked가 false일 때만 작동합니다. 락걸렸을 때는 )
+        if (Input.GetKey(KeyCode.LeftArrow) && !is_locked) // 왼쪽 화살표 키를 누르면 (is_locked가 false일 때만 작동합니다. 락걸렸을 때는 )
         {
             main_axis_width -= main_axis_width_change_speed;
                 if (main_axis_width < main_axis_width_min) // main_axis_width가 최소를 넘어가면
