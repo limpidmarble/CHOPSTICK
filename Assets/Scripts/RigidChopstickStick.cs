@@ -15,14 +15,17 @@ public class RigidChopstickStick : MonoBehaviour
 
     Rigidbody2D rb2d;
 
-    List<Collision2D> collisions = new List<Collision2D>(); //이 젓가락에 충돌한 물체들의 리스트입니다. 이 리스트에는 충돌이 시작되면 추가되고, 충돌이 끝나면 제거됨
+    public Dictionary<GameObject, ContactPoint2D> collidingObjects = new Dictionary<GameObject, ContactPoint2D>{}; //이 젓가락에 충돌한 물체들의 리스트입니다. 이 리스트에는 충돌이 시작되면 추가되고, 충돌이 끝나면 제거됨
 
-    public float return_speed = 50f; //원래 위치로 돌아가는 속도입니다.
+    public float return_speed = 2000f; //원래 위치로 돌아가는 속도입니다.
     Vector3 velocity = Vector3.zero;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        return_speed = 1000f; // 초기 속도를 설정합니다.
+
+
         rb2d = GetComponent<Rigidbody2D>();
 
         stick_height = GetComponent<Collider2D>().bounds.size.y; // 젓가락의 높이를 Collider2D의 bounds에서 가져옵니다.
@@ -38,7 +41,7 @@ public class RigidChopstickStick : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Target"))
         {
-            collisions.Add(collision); // 충돌이 시작되면 collisions 리스트에 추가합니다.
+            collidingObjects[collision.gameObject] = collision.contacts[0]; // 충돌한 물체와의 접촉점을 저장합니다.
         }
         is_colliding = true;
     }
@@ -51,18 +54,18 @@ public class RigidChopstickStick : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Target"))
         {
-            collisions.Remove(collision); // 충돌이 끝나면 collisions 리스트에서 제거합니다.
+            collidingObjects.Remove(collision.gameObject);
         }
         is_colliding = false;
 
         Debug.Log("충돌 종료: " + collision.gameObject.name + ", 태그: " + collision.gameObject.tag);
     }
     // Update is called once per frame
-    public void ToTargetPosition(float target_angle)
+    public Vector3 ToTargetPosition(float target_angle)
     {
         Vector3 target_position = stick_target.position; // 돌아가는 목표 위치입니다.
         Vector3 direction = target_position - transform.position;
-        velocity = direction * return_speed * Time.deltaTime;
+        velocity = direction * return_speed * Time.fixedDeltaTime;
         float bef_x = transform.position.x - target_position.x;
         float bef_y = transform.position.y - target_position.y;
 
@@ -71,10 +74,12 @@ public class RigidChopstickStick : MonoBehaviour
         if (bef_x > 0.01f || bef_x < -0.01f || bef_y > 0.01f || bef_y < -0.01f) // 목표 위치와 현재 위치의 차이가 0.01보다 크면
         {
             rb2d.linearVelocity = velocity; // 속도를 설정합니다.
+            return velocity; // 현재 속도를 반환합니다.
         }
         else
         {
             rb2d.linearVelocity = Vector2.zero; // 목표 위치에 도달하면 속도를 0으로 설정합니다.
+            return Vector3.zero;
         }
     }
 }
