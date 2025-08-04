@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Image fullnessSliderFill; // 슬라이더 Fill 이미지 연결
     public float maxFullness = 100f;
     private float currentFullness = 100f; // 100으로 시작
+    private float updateInterval = 0.01f; // 만복도 업데이트 주기 (초)
+    private float updateTimer = 0f;
 
     void Awake()
     {
@@ -29,10 +31,15 @@ public class GameManager : MonoBehaviour
     }
 
     void Update()
+{
+    updateTimer += Time.deltaTime;
+    if (updateTimer >= updateInterval)
     {
+        updateTimer = 0f;
         if (currentFullness > 0)
         {
-            currentFullness -= 1 * Time.deltaTime;
+            currentFullness -= 3 * updateInterval; // 1초에 3씩 감소
+            if (currentFullness < 0) currentFullness = 0;
             UpdateFullnessUI();
         }
         else
@@ -42,6 +49,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("GameOver"); // GameOver 씬으로 이동
         }
     }
+}
 
     public void IncreaseFullness(float amount)
     {
