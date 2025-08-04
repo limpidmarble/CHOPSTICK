@@ -60,8 +60,8 @@ public class NoLock : MonoBehaviour
         left_target = transform.Find("ChopstickLeftAxis/ChopstickLeftTarget"); // 왼쪽 젓가락 타겟 오브젝트의 RigidChopstickTarget 컴포넌트를 가져옵니다.
         right_target = transform.Find("ChopstickRightAxis/ChopstickRightTarget"); // 오른쪽 젓가락 타겟 오브젝트의 RigidChopstickTarget 컴포넌트를 가져옵니다.
 
-        main_axis_height_max = left_stick.stick_height / 1.2f; // 왼쪽 젓가락의 높이의 절반을 main_axis_height_max로 설정합니다. (왼쪽 젓가락의 높이는 오른쪽 젓가락과 동일하므로 왼쪽 젓가락의 높이를 사용합니다.)
-        main_axis_height_min = -left_stick.stick_height / 1.2f; // same logic as above, but for minimum height (AI가 왜 영어랑 한국어를 섞어서 쓰는지?)
+        main_axis_height_max = left_stick.stick_height / 1f; // 왼쪽 젓가락의 높이의 절반을 main_axis_height_max로 설정합니다. (왼쪽 젓가락의 높이는 오른쪽 젓가락과 동일하므로 왼쪽 젓가락의 높이를 사용합니다.)
+        main_axis_height_min = -left_stick.stick_height / 1f; // same logic as above, but for minimum height (AI가 왜 영어랑 한국어를 섞어서 쓰는지?)
 
         stick_squeeze_angle_left = stick_squeeze_min_angle; // 젓가락의 기본 앵글은 stick_squeeze_min_angle로 설정
         stick_squeeze_angle_right = stick_squeeze_min_angle;
