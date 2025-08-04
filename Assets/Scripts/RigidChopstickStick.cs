@@ -18,7 +18,9 @@ public class RigidChopstickStick : MonoBehaviour
     public Dictionary<GameObject, ContactPoint2D> collidingObjects = new Dictionary<GameObject, ContactPoint2D>{}; //이 젓가락에 충돌한 물체들의 리스트입니다. 이 리스트에는 충돌이 시작되면 추가되고, 충돌이 끝나면 제거됨
 
     public float return_speed = 2000f; //원래 위치로 돌아가는 속도입니다.
-    Vector3 velocity = Vector3.zero;
+    public Vector3 velocity = Vector3.zero;
+
+    public float vertical_force; // 일종의 젓가락의 수직 방향 오프셋? 꽃히는 로직 구현할 때 사용. 실제로 움직일 때 속도 값이기도 하고 물체에 대고 커서를 물체 쪽으로 가까이 할 때도 절댓값이 늘어남.
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,7 +43,12 @@ public class RigidChopstickStick : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Target"))
         {
+            MonoBehaviour target_script = collision.gameObject.GetComponent<MonoBehaviour>();
             collidingObjects[collision.gameObject] = collision.contacts[0]; // 충돌한 물체와의 접촉점을 저장합니다.
+            if (target_script != null)
+            {
+                
+            }
         }
         is_colliding = true;
     }
@@ -68,6 +75,8 @@ public class RigidChopstickStick : MonoBehaviour
         velocity = direction * return_speed * Time.fixedDeltaTime;
         float bef_x = transform.position.x - target_position.x;
         float bef_y = transform.position.y - target_position.y;
+
+        vertical_force = transform.InverseTransformDirection(velocity).y;
 
         rb2d.MoveRotation(target_angle); // 목표 앵글로 회전합니다.
 
