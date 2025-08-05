@@ -7,9 +7,15 @@ public class RigidChopstickStick : MonoBehaviour
 
     public bool is_touching_stick = false; // 이 젓가락이 다른 젓가락과 닿아있는지 여부입니다. true면 닿아있고, false면 닿아있지 않습니다.
 
+    PolygonCollider2D ghost_collider; //다른 물체들과 본체가 겹치는지 판단하는 콜라이더 (is_trigger되어 있음)
+
+    PolygonCollider2D actual_collider; // 이 젓가락의 실제 콜라이더입니다. (이 콜라이더는 젓가락의 끝 부분에 위치합니다.)
+
     public Transform stick_target; // 젓가락이 있어야 할 목표 위치 오브젝트의 Transform을 저장하는 변수입니다.
 
     public Transform other_stick;
+
+    PolygonCollider2D other_actual_collider; // 다른 젓가락의 실제 콜라이더입니다. (이 콜라이더는 젓가락의 끝 부분에 위치합니다.)
 
     public float initial_stick_relative_position; 
     public float stick_relative_position;
@@ -39,6 +45,12 @@ public class RigidChopstickStick : MonoBehaviour
 
         initial_stick_relative_position = transform.position.x - other_stick.position.x; // 다른 젓가락과의 상대 위치를 계산합니다. (왼쪽 젓가락은 음수, 오른쪽 젓가락은 양수로 설정됩니다.)
 
+        PolygonCollider2D[] colliders = gameObject.GetComponents<PolygonCollider2D>();
+        ghost_collider = colliders[0]; // 첫 번째 콜라이더는 트리거로 설정되어 있습니다.
+        actual_collider = colliders[1];
+        PolygonCollider2D[] other_colliders = other_stick.GetComponents<PolygonCollider2D>();
+        other_actual_collider = other_colliders[1];
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -60,7 +72,6 @@ public class RigidChopstickStick : MonoBehaviour
         is_colliding = true;
     }
         
-
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Stick"))
@@ -75,20 +86,33 @@ public class RigidChopstickStick : MonoBehaviour
 
         Debug.Log("충돌 종료: " + collision.gameObject.name + ", 태그: " + collision.gameObject.tag);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+    }
+
     // Update is called once per frame
     public Vector3 ToTargetPosition(float target_angle)
     {
         stick_relative_position = transform.position.x - other_stick.position.x; // 현재 젓가락과 다른 젓가락의 상대 위치를 계산합니다. (왼쪽 젓가락은 음수, 오른쪽 젓가락은 양수가 일반적인 상황)
         if (initial_stick_relative_position * stick_relative_position < 0) // 현재 젓가락이 왼쪽에 있고, 다른 젓가락이 오른쪽에 있는 경우
-            {
-                Debug.Log("충돌 무시: " + other_stick.name);
-                Physics2D.IgnoreCollision(other_stick.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>()); // 충돌을 무시합니다.
-            }
-            else
-            {
-                Physics2D.IgnoreCollision(other_stick.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>(), false); // 충돌을 무시하지 않습니다.
-                
-            }
+        {
+            Debug.Log("충돌 무시: " + other_stick.name);
+            Physics2D.IgnoreCollision(other_actual_collider, actual_collider); // 충돌을 무시합니다.
+        }
+        else
+        {
+            Physics2D.IgnoreCollision(other_actual_collider, actual_collider, false); // 충돌을 무시하지 않습니다.
+
+        }
 
 
 

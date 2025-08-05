@@ -41,9 +41,9 @@ public class NoLock : MonoBehaviour
 
     public float main_axis_width = 2f; //왼/오 젓가락 스프라이트의 너비입니다. 
 
-    float main_axis_width_max = 4f; //왼/오 젓가락 스프라이트의 너비의 최대값입니다. (왼쪽 젓가락은 왼쪽으로, 오른쪽 젓가락은 오른쪽으로 이동해야 하므로 양수로 설정합니다.)
+    public float main_axis_width_max = 4f; //왼/오 젓가락 스프라이트의 너비의 최대값입니다. (왼쪽 젓가락은 왼쪽으로, 오른쪽 젓가락은 오른쪽으로 이동해야 하므로 양수로 설정합니다.)
 
-    float main_axis_width_min = 2f;
+    public float main_axis_width_min = 2f;
 
     public float main_axis_width_change_speed = 0.1f; //왼/오 젓가락 스프라이트의 너비를 변경하는 속도입니다. (단위: 초당 변화량)
 
@@ -129,7 +129,7 @@ public class NoLock : MonoBehaviour
                 main_axis_height = main_axis_height_max; // 최대로 고정합니다.
             }
         }
-        if (Input.GetKey(KeyCode.RightArrow) && !is_locked) // 오른쪽 화살표 키를 누르면
+        if (Input.mouseScrollDelta.y > 0 && !is_locked) // 오른쪽 화살표 키를 누르면
         {
             main_axis_width += main_axis_width_change_speed;
             if (main_axis_width > main_axis_width_max) // main_axis_width가 최대를 넘어가면
@@ -138,7 +138,7 @@ public class NoLock : MonoBehaviour
             }
             axis_width_increased = true; // main_axis_width가 증가했음을 표시합니다.
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && !is_locked) // 왼쪽 화살표 키를 누르면 (is_locked가 false일 때만 작동합니다. 락걸렸을 때는 )
+        if (Input.mouseScrollDelta.y < 0 && !is_locked) // 왼쪽 화살표 키를 누르면 (is_locked가 false일 때만 작동합니다. 락걸렸을 때는 )
         {
             main_axis_width -= main_axis_width_change_speed;
                 if (main_axis_width < main_axis_width_min) // main_axis_width가 최소를 넘어가면
@@ -186,7 +186,6 @@ public class NoLock : MonoBehaviour
             left_stick_velocity = left_stick.ToTargetPosition(angle_on_collision_left);
             right_stick_velocity = right_stick.ToTargetPosition(-angle_on_collision_right); // 왼쪽, 오른쪽 젓가락을 목표 위치로 이동시키는 함수 호출
 
-            
 
             foreach (var target in holdingTargets)
             {
