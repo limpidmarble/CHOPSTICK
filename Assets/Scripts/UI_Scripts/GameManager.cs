@@ -1,65 +1,88 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // 씬 전환을 위해 필요
-
+using UnityEngine.SceneManagement;
+using System.Collections; 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Slider fullnessSlider;
-    public Image fullnessSliderFill; // 슬라이더 Fill 이미지 연결
+    public Image fullnessSliderFill;
+    public FaceController faceController;
+    public GameObject scorePopupPrefab;
+    public AudioSource audioSource;
+    public AudioClip eatSound;
     public float maxFullness = 100f;
-    private float currentFullness = 100f; // 100으로 시작
-    private float updateInterval = 0.01f; // 만복도 업데이트 주기 (초)
+    private float currentFullness = 100f;
+    private float updateInterval = 0.01f;
     private float updateTimer = 0f;
+    private bool isGameOver = false;
 
     void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     void Start()
     {
-        currentFullness = maxFullness; // 100으로 시작
+        currentFullness = maxFullness;
         UpdateFullnessUI();
+        faceController.UpdateFace(currentFullness, maxFullness);
     }
 
     void Update()
-{
-    updateTimer += Time.deltaTime;
-    if (updateTimer >= updateInterval)
     {
-        updateTimer = 0f;
-        if (currentFullness > 0)
+        if (isGameOver) return;
+
+        updateTimer += Time.deltaTime;
+        if (updateTimer >= updateInterval)
         {
-            currentFullness -= 3 * updateInterval; // 1초에 3씩 감소
-            if (currentFullness < 0) currentFullness = 0;
-            UpdateFullnessUI();
-        }
-        else
-        {
-            currentFullness = 0;
-            UpdateFullnessUI();
-            SceneManager.LoadScene("GameOver"); // GameOver 씬으로 이동
+            updateTimer = 0f;
+            if (currentFullness > 0)
+            {
+                currentFullness -= 3 * updateInterval;
+                if (currentFullness < 0) currentFullness = 0;
+                UpdateFullnessUI();
+                faceController.UpdateFace(currentFullness, maxFullness);
+            }
+            else
+            {
+                currentFullness = 0;
+                UpdateFullnessUI();
+                StartCoroutine(GameOverSequence());
+            }
         }
     }
-}
 
-    public void IncreaseFullness(float amount)
+    IEnumerator GameOverSequence()
+    {
+        isGameOver = true;
+        faceController.SetGameOverFace();
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(2f);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void IncreaseFullness(float amount, Vector3 foodPos)
     {
         currentFullness += amount;
         if (currentFullness > maxFullness)
-        {
             currentFullness = maxFullness;
-        }
-        Debug.Log("만복도 증가! 현재 만복도: " + currentFullness);
         UpdateFullnessUI();
+        faceController.PlayEatAnimation();
+        faceController.UpdateFace(currentFullness, maxFullness);
+        ShowScorePopup(foodPos, (int)amount);
+        if (audioSource && eatSound) audioSource.PlayOneShot(eatSound);
+    }
+
+    public void ShowScorePopup(Vector3 worldPos, int score)
+    {
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+        GameObject popup = Instantiate(scorePopupPrefab, screenPos, Quaternion.identity, GameObject.Find("Canvas").transform);
+        popup.GetComponent<ScorePopup>().Init(score);
     }
 
     void UpdateFullnessUI()
@@ -73,19 +96,18 @@ public class GameManager : MonoBehaviour
         if (fullnessSliderFill != null)
         {
             float t = currentFullness / maxFullness;
-            // 0~0.5: 빨강→노랑, 0.5~1: 노랑→초록
             Color color;
             if (t < 0.5f)
             {
-                // 빨강(1,0,0)→노랑(1,1,0)
                 color = Color.Lerp(Color.red, Color.yellow, t * 2f);
             }
             else
             {
-                // 노랑(1,1,0)→초록(0,1,0)
                 color = Color.Lerp(Color.yellow, Color.green, (t - 0.5f) * 2f);
             }
             fullnessSliderFill.color = color;
         }
     }
+
+    public float CurrentFullness => currentFullness;
 }
