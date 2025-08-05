@@ -82,11 +82,11 @@ public class RigidChopstickStick : MonoBehaviour
         if (initial_stick_relative_position * stick_relative_position < 0) // 현재 젓가락이 왼쪽에 있고, 다른 젓가락이 오른쪽에 있는 경우
             {
                 Debug.Log("충돌 무시: " + other_stick.name);
-                Physics2D.IgnoreCollision(other_stick.GetComponent<Collider2D>(), GetComponent<Collider2D>()); // 충돌을 무시합니다.
+                Physics2D.IgnoreCollision(other_stick.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>()); // 충돌을 무시합니다.
             }
             else
             {
-                Physics2D.IgnoreCollision(other_stick.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false); // 충돌을 무시하지 않습니다.
+                Physics2D.IgnoreCollision(other_stick.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>(), false); // 충돌을 무시하지 않습니다.
                 
             }
 
