@@ -52,33 +52,36 @@ public class GameManager : MonoBehaviour
     {
         updateTimer = 0f;
 
-        float decreasePerSecond = 0.5f;
+        float decreasePerSecond = 2f;
 
         if (elapsedTime < 15f)
         {
-            decreasePerSecond = 0.5f;
+            decreasePerSecond = 2f;
         }
         else if (elapsedTime < 45f)
         {
-            decreasePerSecond = 1f;
+            // 15~45초: 2 → 4 선형 증가
+            float t = (elapsedTime - 15f) / (45f - 15f);
+            decreasePerSecond = Mathf.Lerp(2f, 4f, t);
         }
+
         else if (elapsedTime < 90f)
         {
-            // 45~90초: 1 → 3 선형 증가
+            // 45~90초: 4 → 6 선형 증가
             float t = (elapsedTime - 45f) / (90f - 45f);
-            decreasePerSecond = Mathf.Lerp(1f, 3f, t);
+            decreasePerSecond = Mathf.Lerp(4f, 6f, t);
         }
         else if (elapsedTime < 150f)
         {
-            // 90~150초: 3 → 7 선형 증가
+            // 90~150초: 6 → 9 선형 증가
             float t = (elapsedTime - 90f) / (150f - 90f);
-            decreasePerSecond = Mathf.Lerp(3f, 7f, t);
+            decreasePerSecond = Mathf.Lerp(6f, 9f, t);
         }
         else
         {
-            // 150초 이후: 7에서 15까지 2분간 선형 증가, 이후 15 고정
+            // 150초 이후: 8에서 15까지 2분간 선형 증가, 이후 15 고정
             float t = Mathf.Min((elapsedTime - 150f) / 120f, 1f);
-            decreasePerSecond = Mathf.Lerp(7f, 15f, t);
+            decreasePerSecond = Mathf.Lerp(8f, 15f, t);
         }
 
         float decreaseAmount = decreasePerSecond * updateInterval;
@@ -173,28 +176,29 @@ public class GameManager : MonoBehaviour
     }
 
     void UpdateFullnessUI()
+{
+    if (fullnessSlider != null)
     {
-        if (fullnessSlider != null)
-        {
-            fullnessSlider.maxValue = maxFullness;
-            fullnessSlider.value = currentFullness;
-        }
-        // 색상 변화: 초록(100)→노랑(50)→빨강(0)
-        if (fullnessSliderFill != null)
-        {
-            float t = currentFullness / maxFullness;
-            Color color;
-            if (t < 0.5f)
-            {
-                color = Color.Lerp(Color.red, Color.yellow, t * 2f);
-            }
-            else
-            {
-                color = Color.Lerp(Color.yellow, Color.green, (t - 0.5f) * 2f);
-            }
-            fullnessSliderFill.color = color;
-        }
+        fullnessSlider.maxValue = maxFullness;
+        fullnessSlider.value = currentFullness;
     }
+    // 색상 변화: 빨강(0)→노랑(50)→녹차색(100)
+    if (fullnessSliderFill != null)
+    {
+        float t = currentFullness / maxFullness;
+        Color greenTea = new Color(0.7f, 0.85f, 0.5f); // 녹차색(연녹색)
+        Color color;
+        if (t < 0.5f)
+        {
+            color = Color.Lerp(Color.red, Color.yellow, t * 2f);
+        }
+        else
+        {
+            color = Color.Lerp(Color.yellow, greenTea, (t - 0.5f) * 2f);
+        }
+        fullnessSliderFill.color = color;
+    }
+}
 
     public float CurrentFullness => currentFullness;
     public int TotalScore => totalScore;

@@ -10,7 +10,7 @@ public class Food : MonoBehaviour
         // Sprite 적용
         GetComponent<SpriteRenderer>().sprite = data.sprite;
         // 질량 적용
-        GetComponent<Rigidbody2D>().mass = Mathf.Ceil(data.mass * 0.7f);
+        GetComponent<Rigidbody2D>().mass = Mathf.Ceil(data.mass * 0.5f);
         // 마찰 적용
         var col = GetComponent<Collider2D>();
         if (col != null)
