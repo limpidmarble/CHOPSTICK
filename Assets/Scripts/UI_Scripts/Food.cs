@@ -30,8 +30,7 @@ public class Food : MonoBehaviour
     {
         if (other.CompareTag("Target"))
         {
-            GameManager.instance.IncreaseFullness(data.fullnessValue, transform.position);
-            GameManager.instance.ShowScorePopup(transform.position, data.score);
+            GameManager.instance.IncreaseFullness(data.fullnessValue, transform.position, data.score);
             Destroy(gameObject);
         }
     }

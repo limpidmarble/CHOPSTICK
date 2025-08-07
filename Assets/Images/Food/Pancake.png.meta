@@ -3,8 +3,8 @@ guid: cc25bfefc126e0e47ab06e67f2d05949
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 349083975424900986
-    second: KakaoTalk_20250805_233441431_0
+      213: 5871849610016742436
+    second: Pancake_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KakaoTalk_20250805_233441431_0
+      name: Pancake_0
       rect:
         serializedVersion: 2
         x: 363
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7f7bffa60238d400800000000000000
-      internalID: 349083975424900986
+      spriteID: 42c50932c100d7150800000000000000
+      internalID: 5871849610016742436
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      KakaoTalk_20250805_233441431_0: 349083975424900986
+      Pancake_0: 5871849610016742436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

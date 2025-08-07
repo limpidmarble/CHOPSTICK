@@ -3,8 +3,8 @@ guid: 7e11e2114556a9d4db1b3ebf365c3bd5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1398949776356857049
-    second: KakaoTalk_20250805_233838608_0
+      213: 4772259459827928560
+    second: Macaron_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KakaoTalk_20250805_233838608_0
+      name: Macaron_0
       rect:
         serializedVersion: 2
         x: 220
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72b23a1279ee59ce0800000000000000
-      internalID: -1398949776356857049
+      spriteID: 0fd8a07b1b87a3240800000000000000
+      internalID: 4772259459827928560
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      KakaoTalk_20250805_233838608_0: -1398949776356857049
+      Macaron_0: 4772259459827928560
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

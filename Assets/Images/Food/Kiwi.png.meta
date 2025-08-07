@@ -3,8 +3,8 @@ guid: 3fa98edb068dedc4e89e3f6889017c68
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3172304054977103779
-    second: KakaoTalk_20250805_233931366_0
+      213: 4138223980208024357
+    second: Kiwi_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KakaoTalk_20250805_233931366_0
+      name: Kiwi_0
       rect:
         serializedVersion: 2
         x: 392
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a7017cfab9460c20800000000000000
-      internalID: 3172304054977103779
+      spriteID: 52b6d45e8cced6930800000000000000
+      internalID: 4138223980208024357
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      KakaoTalk_20250805_233931366_0: 3172304054977103779
+      Kiwi_0: 4138223980208024357
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

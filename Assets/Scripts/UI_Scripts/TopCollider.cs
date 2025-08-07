@@ -16,7 +16,10 @@ public class TopCollider : MonoBehaviour
     {
         if (other.CompareTag("Target"))
         {
-            GameManager.instance.IncreaseFullness(10, other.transform.position);
+            Food food = other.GetComponent<Food>();
+        
+            GameManager.instance.IncreaseFullness(food.data.fullnessValue, other.transform.position, food.data.score);
+           
 
             if (successEffect != null)
                 Instantiate(successEffect, other.transform.position, Quaternion.identity);

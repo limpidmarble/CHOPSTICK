@@ -18,7 +18,7 @@ public class ScorePopup : MonoBehaviour
 
     private IEnumerator PopupAnim()
     {
-        float duration = 3f;
+        float duration = 2f;
         float elapsed = 0f;
         Vector3 startPos = transform.position;
         Vector3 endPos = startPos + Vector3.up * 1.2f;

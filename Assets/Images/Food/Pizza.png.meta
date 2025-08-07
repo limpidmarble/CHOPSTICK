@@ -3,8 +3,8 @@ guid: 62a32b3a9c99ed0459b7e32ff8d0d473
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3592930257141393778
-    second: white-Photoroom (1)_0
+      213: 6048862160296339182
+    second: Pizza_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: white-Photoroom (1)_0
+      name: Pizza_0
       rect:
         serializedVersion: 2
         x: 493
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e869550a7f8532ec0800000000000000
-      internalID: -3592930257141393778
+      spriteID: ee6e3c72610e1f350800000000000000
+      internalID: 6048862160296339182
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      white-Photoroom (1)_0: -3592930257141393778
+      Pizza_0: 6048862160296339182
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

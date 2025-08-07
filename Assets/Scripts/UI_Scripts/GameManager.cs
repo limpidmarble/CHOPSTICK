@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections; 
+using TMPro;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -19,6 +21,10 @@ public class GameManager : MonoBehaviour
 
     private float elapsedTime = 0f;
 
+    // 누적 점수 관련
+    public TextMeshProUGUI scoreText; // UI에 할당
+    private int totalScore = 0;
+
     void Awake()
     {
         if (instance == null)
@@ -32,6 +38,7 @@ public class GameManager : MonoBehaviour
         currentFullness = maxFullness;
         UpdateFullnessUI();
         faceController.UpdateFace(currentFullness, maxFullness);
+        UpdateScoreUI();
     }
 
     void Update()
@@ -101,7 +108,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOver");
     }
 
-    public void IncreaseFullness(float amount, Vector3 foodPos)
+
+    public void IncreaseFullness(float amount, Vector3 foodPos, int score)
     {
         currentFullness += amount;
         if (currentFullness > maxFullness)
@@ -109,8 +117,15 @@ public class GameManager : MonoBehaviour
         UpdateFullnessUI();
         faceController.PlayEatAnimation();
         faceController.UpdateFace(currentFullness, maxFullness);
-        ShowScorePopup(foodPos, (int)amount);
+        ShowScorePopup(foodPos, score);
         if (audioSource && eatSound) audioSource.PlayOneShot(eatSound);
+
+        // 점수 누적
+        if (score > 0)
+        {
+            totalScore += score;
+            UpdateScoreUI();
+        }
     }
 
     public void ShowScorePopup(Vector3 worldPos, int score)
@@ -118,6 +133,14 @@ public class GameManager : MonoBehaviour
         Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
         GameObject popup = Instantiate(scorePopupPrefab, screenPos, Quaternion.identity, GameObject.Find("Canvas").transform);
         popup.GetComponent<ScorePopup>().Init(score);
+    }
+
+    void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = $"Score: {totalScore}";
+        }
     }
 
     void UpdateFullnessUI()
@@ -145,4 +168,5 @@ public class GameManager : MonoBehaviour
     }
 
     public float CurrentFullness => currentFullness;
+    public int TotalScore => totalScore;
 }

@@ -3,8 +3,8 @@ guid: 6faf47454bdf3014b960dfbf85ed1d99
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3905209423568222991
-    second: chicken-9579090_1280_0
+      213: 5336855417275088078
+    second: Chicken_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chicken-9579090_1280_0
+      name: Chicken_0
       rect:
         serializedVersion: 2
         x: 131
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f445be48b8edc9c0800000000000000
-      internalID: -3905209423568222991
+      spriteID: eccfc44e9b1501a40800000000000000
+      internalID: 5336855417275088078
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      chicken-9579090_1280_0: -3905209423568222991
+      Chicken_0: 5336855417275088078
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

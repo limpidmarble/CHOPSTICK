@@ -3,8 +3,8 @@ guid: d733058c9a93d8249b06cadd1adb2b8c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3621881966847017282
-    second: KakaoTalk_20250805_233038928_0
+      213: -1595998989223354662
+    second: Hamburger_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KakaoTalk_20250805_233038928_0
+      name: Hamburger_0
       rect:
         serializedVersion: 2
         x: 318
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2414f449572834230800000000000000
-      internalID: 3621881966847017282
+      spriteID: ade9571106fd9d9e0800000000000000
+      internalID: -1595998989223354662
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      KakaoTalk_20250805_233038928_0: 3621881966847017282
+      Hamburger_0: -1595998989223354662
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
