@@ -55,7 +55,6 @@ public class RigidChopstickStick : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("충돌 감지: " + collision.gameObject.name + ", 태그: " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Stick"))
         {
             is_touching_stick = true; // 다른 젓가락과 닿아있으면 true로 설정합니다.
@@ -83,8 +82,6 @@ public class RigidChopstickStick : MonoBehaviour
             collidingObjects.Remove(collision.gameObject);
         }
         is_colliding = false;
-
-        Debug.Log("충돌 종료: " + collision.gameObject.name + ", 태그: " + collision.gameObject.tag);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

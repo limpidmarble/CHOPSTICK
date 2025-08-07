@@ -48,11 +48,27 @@ public class ScoreManager : MonoBehaviour
         }
 
         firstScore.text = $"{sortedScores[0]}";
-        secondScore.text = $"{sortedScores[1]}";
-        thirdScore.text = $"{sortedScores[2]}";
-        newRank.text = $"{lastRank}" + ".";
+        if (sortedScores.Count >= 2)
+        {
+            secondScore.text = $"{sortedScores[1]}";
+            if (sortedScores.Count >= 3)
+            {
+                thirdScore.text = $"{sortedScores[2]}";
+            }
+        }
+        Debug.Log(newRank);
+        Debug.Log(newScore);
+        newRank.text = "Score:";
         newScore.text = $"{lastScore}";
 
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 
 
