@@ -57,7 +57,7 @@ public class NoLock : MonoBehaviour
         Application.targetFrameRate = 60; // 최대 60프레임으로 제한
 
         Cursor.visible = false;
-                
+
         stick_left_axis = transform.Find("ChopstickLeftAxis"); // ChopstickLeftAxis는 왼쪽 젓가락의 회전축 역할을 하는 오브젝트입니다. 축이 각 젓가락의 부모이기 때문에 이걸 회전시키면 대응하는 젓가락 오브젝트도 같이 돌아갑니다.
         stick_right_axis = transform.Find("ChopstickRightAxis"); //이하 동일
         left_target = transform.Find("ChopstickLeftAxis/ChopstickLeftTarget"); // 왼쪽 젓가락 타겟 오브젝트의 RigidChopstickTarget 컴포넌트를 가져옵니다.
@@ -70,6 +70,7 @@ public class NoLock : MonoBehaviour
         stick_squeeze_angle_right = stick_squeeze_min_angle;
 
         main_axis_height_change_speed = 0.2f;
+        stick_squeeze_max_angle = 70f;
     }
 
     // Update is called once per frame

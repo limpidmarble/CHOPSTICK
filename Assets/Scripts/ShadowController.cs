@@ -8,13 +8,11 @@ public class ShadowController : MonoBehaviour
 
     SpriteRenderer shadowRenderer;
 
-    RotationConstraint shadowRC;
-
     Collider2D col;
 
     public float tableY = 0f;
 
-    public float maxAlpha = 1f;
+    public float maxAlpha = 0.6f;
 
     public float minY = 0f;
     void Start()
@@ -23,16 +21,13 @@ public class ShadowController : MonoBehaviour
         minY = col.bounds.size.y / 2f;
         tableY = -2.17f;
 
+        maxAlpha = 0.8f;
+
         shadow = transform.GetChild(0);
         shadowRenderer = shadow.GetComponent<SpriteRenderer>();
-        shadowRC = shadow.GetComponent<RotationConstraint>();
         ConstraintSource source = new ConstraintSource();
         source.sourceTransform = this.transform;
         source.weight = 1f;
-        shadowRC.AddSource(source);
-        shadowRC.constraintActive = true;
-        shadowRC.locked = true;
-        shadowRC.weight = 1f;
     }
 
     // Update is called once per frame
