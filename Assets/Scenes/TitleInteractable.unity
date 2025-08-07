@@ -600,8 +600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5153cbae9517c4e46a19caeff96b1ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullSceneSprite: {fileID: -9078290908612738810, guid: fe0ac9c53f1e51a439ab6da7b97641f8, type: 3}
-  holeSceneSprite: {fileID: 7890406491678777641, guid: 650355d49b9e58941bec4b901738e47e, type: 3}
   gameStart: {fileID: 387393618}
   startVelocity: {x: -6, y: 5}
   isStarting: 0
@@ -834,6 +832,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2365179539390094729, guid: d73a1858281df2d46b262ca44ff10017, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2969832589036287896, guid: d73a1858281df2d46b262ca44ff10017, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -889,6 +891,10 @@ PrefabInstance:
     - target: {fileID: 2969832589036287896, guid: d73a1858281df2d46b262ca44ff10017, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018337972739780775, guid: d73a1858281df2d46b262ca44ff10017, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6800538366921829875, guid: d73a1858281df2d46b262ca44ff10017, type: 3}
       propertyPath: m_Name

@@ -12,6 +12,8 @@ public class GameArea : MonoBehaviour
         if (collision.CompareTag("Target"))
         {
             Destroy(collision.gameObject);
+            food_spawner.foodInScene--;
+            Debug.Log("나갔네");
         }
         if (collision.CompareTag("IButton"))
         {

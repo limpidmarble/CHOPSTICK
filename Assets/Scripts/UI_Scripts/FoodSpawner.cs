@@ -115,8 +115,8 @@ public class FoodSpawner : MonoBehaviour
         }
 
         GameObject prefab = spawnQueue.Dequeue();
-        Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         foodInScene++;
+        Instantiate(prefab, spawnPoint.position, Quaternion.identity);
         lastDequeueTime = Time.time;
     }
 }
