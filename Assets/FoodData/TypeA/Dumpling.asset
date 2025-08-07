@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dumpling
   m_EditorClassIdentifier: 
   foodName: Dumpling
-  sprite: {fileID: -4631076819210248750, guid: 80d73660844c4fb46ad6898d685821db, type: 3}
+  sprite: {fileID: -2096600005007582725, guid: 80d73660844c4fb46ad6898d685821db, type: 3}
   score: 9
   mass: 30
   fullnessValue: 10

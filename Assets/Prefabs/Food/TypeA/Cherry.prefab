@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1435901459259225544, guid: b26ce9a1b108f0744af1c0ce9c2d5d48, type: 3}
+  m_Sprite: {fileID: 8790145991630729769, guid: b26ce9a1b108f0744af1c0ce9c2d5d48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -574,7 +574,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1585735001498130876
 MonoBehaviour:
@@ -588,4 +588,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff58e29b71c90da4a881a1fd47fed236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 47f1cefe36c7c334c99a266e5922ca4a, type: 2}
+  data: {fileID: 11400000, guid: ec2b2ff0de5e6f7498a583dab574ef76, type: 2}

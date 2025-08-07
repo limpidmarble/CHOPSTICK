@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hamburger
   m_EditorClassIdentifier: 
   foodName: Hamburger
-  sprite: {fileID: -1595998989223354662, guid: d733058c9a93d8249b06cadd1adb2b8c, type: 3}
+  sprite: {fileID: 3621881966847017282, guid: d733058c9a93d8249b06cadd1adb2b8c, type: 3}
   score: 20
   mass: 100
   fullnessValue: 30

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pizza
   m_EditorClassIdentifier: 
   foodName: Pizza
-  sprite: {fileID: 6048862160296339182, guid: 62a32b3a9c99ed0459b7e32ff8d0d473, type: 3}
+  sprite: {fileID: -3592930257141393778, guid: 62a32b3a9c99ed0459b7e32ff8d0d473, type: 3}
   score: 15
   mass: 50
   fullnessValue: 25

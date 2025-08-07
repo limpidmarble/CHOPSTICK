@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Macaron
   m_EditorClassIdentifier: 
   foodName: Macaron
-  sprite: {fileID: 4772259459827928560, guid: 7e11e2114556a9d4db1b3ebf365c3bd5, type: 3}
+  sprite: {fileID: -1398949776356857049, guid: 7e11e2114556a9d4db1b3ebf365c3bd5, type: 3}
   score: 6
   mass: 20
   fullnessValue: 10

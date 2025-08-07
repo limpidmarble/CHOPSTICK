@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pancake
   m_EditorClassIdentifier: 
   foodName: Pancake
-  sprite: {fileID: 5871849610016742436, guid: cc25bfefc126e0e47ab06e67f2d05949, type: 3}
+  sprite: {fileID: 349083975424900986, guid: cc25bfefc126e0e47ab06e67f2d05949, type: 3}
   score: 11
   mass: 50
   fullnessValue: 20

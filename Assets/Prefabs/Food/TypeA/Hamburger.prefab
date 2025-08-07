@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1595998989223354662, guid: d733058c9a93d8249b06cadd1adb2b8c, type: 3}
+  m_Sprite: {fileID: 3621881966847017282, guid: d733058c9a93d8249b06cadd1adb2b8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.92, y: 8.4}
+  m_Size: {x: 14.19, y: 12.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -115,7 +115,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!60 &7920560853671938072
 PolygonCollider2D:
@@ -156,7 +156,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 14.19, y: 12.23}
-    newSize: {x: 7.92, y: 8.4}
+    newSize: {x: 14.19, y: 12.23}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -462,4 +462,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff58e29b71c90da4a881a1fd47fed236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e96a90023ee723d4f9a4c95328f640d6, type: 2}
+  data: {fileID: 11400000, guid: 4ab4618f26bb11f48b1c5c96428f7ee7, type: 2}

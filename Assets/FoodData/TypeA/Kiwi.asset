@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kiwi
   m_EditorClassIdentifier: 
   foodName: Kiwi
-  sprite: {fileID: -8113185096396602001, guid: a7886db3b372d6c4781b94e8822013e6, type: 3}
+  sprite: {fileID: 3172304054977103779, guid: 3fa98edb068dedc4e89e3f6889017c68, type: 3}
   score: 7
   mass: 25
   fullnessValue: 10
