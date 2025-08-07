@@ -1,14 +1,37 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Food : MonoBehaviour
 {
-    public int score = 3; // Inspector에서 음식별 점수 조절 가능
+    public FoodData data;
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void Start()
+    {
+        // Sprite 적용
+        GetComponent<SpriteRenderer>().sprite = data.sprite;
+        // 질량 적용
+        GetComponent<Rigidbody2D>().mass = data.mass;
+        // 마찰 적용
+        var col = GetComponent<Collider2D>();
+        if (col != null)
+        {
+            PhysicsMaterial2D mat = new PhysicsMaterial2D();
+            switch (data.friction)
+            {
+                case FoodFriction.Low: mat.friction = 0.1f; break;
+                case FoodFriction.Medium: mat.friction = 0.4f; break;
+                case FoodFriction.High: mat.friction = 0.8f; break;
+            }
+            col.sharedMaterial = mat;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Target"))
         {
-            GameManager.instance.IncreaseFullness(score, transform.position);
+            GameManager.instance.IncreaseFullness(data.fullnessValue, transform.position);
+            GameManager.instance.ShowScorePopup(transform.position, data.score);
             Destroy(gameObject);
         }
     }
