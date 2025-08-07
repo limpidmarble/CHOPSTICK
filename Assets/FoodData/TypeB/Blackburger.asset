@@ -17,5 +17,5 @@ MonoBehaviour:
   score: 100
   mass: 300
   fullnessValue: 100
-  rarity: 0
+  rarity: 3
   friction: 2

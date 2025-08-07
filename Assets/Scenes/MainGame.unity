@@ -200,8 +200,8 @@ Transform:
   m_GameObject: {fileID: 347141632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7000002, y: 1.7000002, z: 1.7000002}
+  m_LocalPosition: {x: 0, y: -0.0161, z: 0}
+  m_LocalScale: {x: 1.7000002, y: 1.6911601, z: 1.7000002}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -541,8 +541,8 @@ Transform:
   m_GameObject: {fileID: 865671143}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000183, y: -0.00005, z: 0}
-  m_LocalScale: {x: 10.666361, y: 5.9999347, z: 1}
+  m_LocalPosition: {x: 0.000183, y: 0.9018, z: 0}
+  m_LocalScale: {x: 10.666361, y: 7.8035154, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1063,7 +1063,7 @@ Transform:
   m_GameObject: {fileID: 1672674327}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.92, y: 2.11, z: 0}
+  m_LocalPosition: {x: -3.92, y: 2.84, z: 0}
   m_LocalScale: {x: 1.2744075, y: 1.2744075, z: 1.2744075}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1082,25 +1082,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8cd4bd68b003f4b9ddaf898f98e3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeAPrefabs:
+  foodPrefabs:
   - {fileID: 6341647422046804631, guid: a64ba8863ecce3e4482367bd66f20424, type: 3}
-  - {fileID: 7088283056366729452, guid: a96e94f45b41072409937b7d582f82b8, type: 3}
   - {fileID: 2419872895257603177, guid: b5f4d057e501c7b498ecc935926c3b3b, type: 3}
-  - {fileID: 8617963791912298327, guid: 1a2f568b59fc2f640a5b8f4237e992b6, type: 3}
-  - {fileID: 1968630373134496735, guid: f5920b07bd6870d4fa31026837d8b2f3, type: 3}
-  - {fileID: 7472266777102536734, guid: dbf55a18c96a72e478fedce1bf6c5aca, type: 3}
-  - {fileID: 7967646813941574988, guid: 1db4645546de2434ab627f772b587546, type: 3}
-  - {fileID: 7967646813941574988, guid: 80e67c60407d35748aed3e652975a058, type: 3}
-  - {fileID: 7967646813941574988, guid: b56f9b94823de7047898e6a76866bbf7, type: 3}
+  - {fileID: 7088283056366729452, guid: a96e94f45b41072409937b7d582f82b8, type: 3}
   - {fileID: 8931968526564993092, guid: 90fe826e5d6715345af943424b5cb523, type: 3}
-  typeBPrefabs:
-  - {fileID: 6341647422046804631, guid: a21af8d30ac8b424f8cfa4e2518bd408, type: 3}
-  - {fileID: 6341647422046804631, guid: 1de5ba9ac2654a441ad19828434a42ce, type: 3}
   - {fileID: 6341647422046804631, guid: 2a2dcfd6d9cf7fd43a5107cd6cbc367f, type: 3}
   - {fileID: 6341647422046804631, guid: 3c3a761dc56c3e04e9455b270ffd699d, type: 3}
   - {fileID: 6341647422046804631, guid: 7f45a06a18d18fc49a5d88acb524d116, type: 3}
   - {fileID: 6341647422046804631, guid: ea79a5a64c5e33844acd15973cd37363, type: 3}
-  - {fileID: 6341647422046804631, guid: c550bab893879c540add5e61b471a17c, type: 3}
+  - {fileID: 7967646813941574988, guid: 1db4645546de2434ab627f772b587546, type: 3}
+  - {fileID: 7967646813941574988, guid: 80e67c60407d35748aed3e652975a058, type: 3}
   spawnInterval: 5
   minFoodCount: 3
   spawnPoint: {fileID: 1923951678}
