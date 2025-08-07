@@ -15,7 +15,7 @@ MonoBehaviour:
   foodName: Goldenburger
   sprite: {fileID: 3628358943730790583, guid: 630c393761e229940ba43b8dc71a68fd, type: 3}
   score: 40
-  mass: 100
+  mass: 150
   fullnessValue: 50
   rarity: 0
   friction: 1

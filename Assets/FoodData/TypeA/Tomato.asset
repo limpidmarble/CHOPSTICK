@@ -15,7 +15,7 @@ MonoBehaviour:
   foodName: Tomato
   sprite: {fileID: -2934702658879998336, guid: a7886db3b372d6c4781b94e8822013e6, type: 3}
   score: 8
-  mass: 30
+  mass: 20
   fullnessValue: 10
   rarity: 0
   friction: 0

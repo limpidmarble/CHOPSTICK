@@ -600,6 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5153cbae9517c4e46a19caeff96b1ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fullSceneSprite: {fileID: -9078290908612738810, guid: fe0ac9c53f1e51a439ab6da7b97641f8, type: 3}
+  holeSceneSprite: {fileID: 7890406491678777641, guid: 650355d49b9e58941bec4b901738e47e, type: 3}
   gameStart: {fileID: 387393618}
   startVelocity: {x: -6, y: 5}
   isStarting: 0
@@ -1340,8 +1342,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.8549, y: -0.7536, z: 0}
-  m_LocalScale: {x: 2.4872935, y: 0.9750717, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.44, y: 0.5645105, z: 0.57894254}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

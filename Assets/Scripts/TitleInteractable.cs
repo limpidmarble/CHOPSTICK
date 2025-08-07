@@ -4,8 +4,8 @@ using System.Collections;
 
 public class TitleInteractable : MonoBehaviour
 {
-//    public Sprite fullSceneSprite;
-//    public Sprite holeSceneSprite;
+    public Sprite fullSceneSprite;
+    public Sprite holeSceneSprite;
 
     public GameObject gameStart;
 
@@ -62,6 +62,7 @@ public class TitleInteractable : MonoBehaviour
             startRigidbody.MoveRotation(angle);
             if (Vector2.Distance(startRigidbody.position, originalStartPosition) < 0.01f && Mathf.Abs(Mathf.DeltaAngle(startRigidbody.rotation, 0)) < 0.5f)
             {
+                spriteRenderer.sprite = fullSceneSprite;
             reachedOriginalPosition = true;
             SceneManager.LoadScene("MainGame");
             }
