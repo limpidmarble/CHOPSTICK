@@ -5,6 +5,7 @@ public class TopCollider : MonoBehaviour
     public GameObject successEffect;
     public AudioClip successSound;
     private AudioSource audioSource;
+    public FoodSpawner foodSpawner;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class TopCollider : MonoBehaviour
                 audioSource.PlayOneShot(successSound);
 
             Destroy(other.gameObject);
+            foodSpawner.foodInScene--;
         }
     }
 }

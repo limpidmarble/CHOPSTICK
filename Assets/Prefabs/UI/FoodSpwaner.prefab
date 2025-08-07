@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4369030424523388816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5714903122289826146}
+  - component: {fileID: 5915802045732466938}
+  m_Layer: 0
+  m_Name: FoodSpwaner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5714903122289826146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369030424523388816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.9, y: 3.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5915802045732466938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369030424523388816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8cd4bd68b003f4b9ddaf898f98e3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodPrefabs:
+  - {fileID: 6341647422046804631, guid: 108c120187065d048a5e6368cde4b45d, type: 3}
+  - {fileID: 2419872895257603177, guid: cb4facb15fc1223478511b47fa08748f, type: 3}
+  - {fileID: 7088283056366729452, guid: c4c7634b77f797e4294f32b0cc57f36b, type: 3}
+  - {fileID: 8931968526564993092, guid: 3ac350c60f7f24c4b901bba516bfab61, type: 3}
+  - {fileID: 8617963791912298327, guid: 2d8ce615d0469b6489af49e4b4e1f705, type: 3}
+  - {fileID: 1968630373134496735, guid: 82d4023a38d16f34798d8a5edb4ee51b, type: 3}
+  - {fileID: 7472266777102536734, guid: f944d9c8696832f40a4ee0eaf14eef08, type: 3}
+  - {fileID: 7967646813941574988, guid: 480dfd98f5045fe45ad1fceaa48f5980, type: 3}
+  spawnArea: {x: 0, y: 0}
+  spawnInterval: 3
