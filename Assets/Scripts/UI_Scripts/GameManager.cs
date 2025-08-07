@@ -105,7 +105,36 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(2f);
         Time.timeScale = 1f;
+        int i = 1;
+        string prefKey;
+
+        while (i <= 101)
+        {
+            if (i == 101)
+            {
+                i = 1;
+                prefKey = "score" + $"{i}";
+                PlayerPrefs.DeleteKey(prefKey);
+                PlayerPrefs.SetInt(prefKey, totalScore);
+                totalScore = 0;
+                break;
+            }
+            prefKey = "score" + $"{i}";
+            if (PlayerPrefs.HasKey(prefKey))
+            {
+                i++;
+            }
+            else
+            {
+                PlayerPrefs.SetInt(prefKey, totalScore);
+                i++;
+                totalScore = 0;
+                break;
+            }
+        }
+
         SceneManager.LoadScene("GameOver");
+
     }
 
 

@@ -18,4 +18,4 @@ MonoBehaviour:
   mass: 30
   fullnessValue: 10
   rarity: 0
-  friction: 0
+  friction: 2
