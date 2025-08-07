@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     private float updateTimer = 0f;
     private bool isGameOver = false;
 
+    private float elapsedTime = 0f;
+
     void Awake()
     {
         if (instance == null)
@@ -34,28 +36,61 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (isGameOver) return;
+    if (isGameOver) return;
 
-        updateTimer += Time.deltaTime;
-        if (updateTimer >= updateInterval)
+    updateTimer += Time.deltaTime;
+    elapsedTime += Time.deltaTime;
+
+    if (updateTimer >= updateInterval)
+    {
+        updateTimer = 0f;
+
+        float decreasePerSecond = 0.5f;
+
+        if (elapsedTime < 15f)
         {
-            updateTimer = 0f;
-            if (currentFullness > 0)
-            {
-                currentFullness -= 3 * updateInterval;
-                if (currentFullness < 0) currentFullness = 0;
-                UpdateFullnessUI();
-                faceController.UpdateFace(currentFullness, maxFullness);
-            }
-            else
-            {
-                currentFullness = 0;
-                UpdateFullnessUI();
-                StartCoroutine(GameOverSequence());
-            }
+            decreasePerSecond = 0.5f;
+        }
+        else if (elapsedTime < 45f)
+        {
+            decreasePerSecond = 1f;
+        }
+        else if (elapsedTime < 90f)
+        {
+            // 45~90초: 1 → 3 선형 증가
+            float t = (elapsedTime - 45f) / (90f - 45f);
+            decreasePerSecond = Mathf.Lerp(1f, 3f, t);
+        }
+        else if (elapsedTime < 150f)
+        {
+            // 90~150초: 3 → 7 선형 증가
+            float t = (elapsedTime - 90f) / (150f - 90f);
+            decreasePerSecond = Mathf.Lerp(3f, 7f, t);
+        }
+        else
+        {
+            // 150초 이후: 7에서 15까지 2분간 선형 증가, 이후 15 고정
+            float t = Mathf.Min((elapsedTime - 150f) / 120f, 1f);
+            decreasePerSecond = Mathf.Lerp(7f, 15f, t);
+        }
+
+        float decreaseAmount = decreasePerSecond * updateInterval;
+
+        if (currentFullness > 0)
+        {
+            currentFullness -= decreaseAmount;
+            if (currentFullness < 0) currentFullness = 0;
+            UpdateFullnessUI();
+            faceController.UpdateFace(currentFullness, maxFullness);
+        }
+        else
+        {
+            currentFullness = 0;
+            UpdateFullnessUI();
+            StartCoroutine(GameOverSequence());
         }
     }
-
+}
     IEnumerator GameOverSequence()
     {
         isGameOver = true;
