@@ -41,6 +41,12 @@ public class TitleInteractable : MonoBehaviour
         startRigidbody.linearVelocity = startVelocity;
 
         StartCoroutine(WaitAndEnable(2f));
+
+        if (audioManager == null)
+        {
+            GameObject audioObject = GameObject.Find("AudioManager");
+            audioManager = audioObject.GetComponent<AudioManager>();
+        }
     }
 
     // Update is called once per frame

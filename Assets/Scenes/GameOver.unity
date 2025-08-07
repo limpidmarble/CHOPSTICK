@@ -1770,6 +1770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullSceneSprite: {fileID: -4357197111600940558, guid: ef9d70b8f5ba76449872652bc8a70e4f, type: 3}
   holeSceneSprite: {fileID: 0}
+  audioManager: {fileID: 0}
   gameStart: {fileID: 581158610}
   startVelocity: {x: -6, y: 5}
   isStarting: 0
