@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         faceController.SetGameOverFace();
         Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1.5f);
         Time.timeScale = 1f;
         int i = 1;
         string prefKey;
@@ -154,22 +154,23 @@ public class GameManager : MonoBehaviour
     }
     // 색상 변화: 빨강(0)→노랑(50)→녹차색(100)
     if (fullnessSliderFill != null)
+{
+    float t = currentFullness / maxFullness;
+    Color greenTea = new Color(0.45f, 0.65f, 0.32f); // 진하지만 쨍하지 않은 녹차색
+    Color color;
+    if (t < 0.5f)
     {
-        float t = currentFullness / maxFullness;
-        Color greenTea = new Color(0.7f, 0.85f, 0.5f); // 녹차색(연녹색)
-        Color color;
-        if (t < 0.5f)
-        {
-            color = Color.Lerp(Color.red, Color.yellow, t * 2f);
-        }
-        else
-        {
-            color = Color.Lerp(Color.yellow, greenTea, (t - 0.5f) * 2f);
-        }
-        fullnessSliderFill.color = color;
+        color = Color.Lerp(Color.red, Color.yellow, t * 2f);
     }
+    else
+    {
+        color = Color.Lerp(Color.yellow, greenTea, (t - 0.5f) * 2f);
+    }
+    fullnessSliderFill.color = color;
+}
 }
 
     public float CurrentFullness => currentFullness;
     public int TotalScore => totalScore;
 }
+

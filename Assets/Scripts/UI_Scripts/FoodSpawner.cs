@@ -83,11 +83,11 @@ public class FoodSpawner : MonoBehaviour
         GameObject prefabToEnqueue = null;
         float rand = Random.value;
 
-        if (t <= 15f)
+        if (t <= 10f)
             prefabToEnqueue = GetRandomByRarity(typeAPrefabs);
-        else if (t <= 30f)
+        else if (t <= 25f)
             prefabToEnqueue = (rand < 0.9f) ? GetRandomByRarity(typeAPrefabs) : GetRandomByRarity(typeBPrefabs);
-        else if (t <= 45f)
+        else if (t <= 40f)
             prefabToEnqueue = (rand < 0.8f) ? GetRandomByRarity(typeAPrefabs) : GetRandomByRarity(typeBPrefabs);
         else
             prefabToEnqueue = (rand < 0.7f) ? GetRandomByRarity(typeAPrefabs) : GetRandomByRarity(typeBPrefabs);
@@ -97,26 +97,45 @@ public class FoodSpawner : MonoBehaviour
     }
 
     void TrySpawnFromQueue()
-    {
-        if (spawnQueue.Count == 0) return;
-        if (Time.time - lastDequeueTime < dequeueInterval) return;
+{
+    if (spawnQueue.Count == 0) return;
+    if (Time.time - lastDequeueTime < dequeueInterval) return;
 
-        // 스폰 체크 박스 영역에 Target 태그 오브젝트가 있으면 스폰하지 않음
-        if (spawnCheckBox != null)
+    if (spawnCheckBox != null)
+    {
+        Vector2 boxSize = spawnCheckBox.size;
+        Vector2 localRandom = new Vector2(
+            Random.Range(-boxSize.x / 2f, boxSize.x / 2f),
+            Random.Range(-boxSize.y / 2f, boxSize.y / 2f)
+        );
+        // 콜라이더의 로컬 랜덤 위치를 월드 좌표로 변환
+        Vector2 worldRandom = spawnCheckBox.transform.TransformPoint(spawnCheckBox.offset + localRandom);
+
+        // Target 태그 감지
+        Collider2D[] hits = Physics2D.OverlapBoxAll(
+            spawnCheckBox.transform.TransformPoint(spawnCheckBox.offset),
+            boxSize,
+            spawnCheckBox.transform.eulerAngles.z
+        );
+        foreach (var hit in hits)
         {
-            Vector2 boxCenter = (Vector2)spawnCheckBox.transform.position + spawnCheckBox.offset;
-            Vector2 boxSize = spawnCheckBox.size;
-            Collider2D[] hits = Physics2D.OverlapBoxAll(boxCenter, boxSize, 0f);
-            foreach (var hit in hits)
-            {
-                if (hit.CompareTag("Target"))
-                    return;
-            }
+            if (hit.CompareTag("Target"))
+                return;
         }
+
+        Debug.Log($"Spawning food at: {worldRandom}");
 
         GameObject prefab = spawnQueue.Dequeue();
         foodInScene++;
-        Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        Instantiate(prefab, worldRandom, Quaternion.identity);
         lastDequeueTime = Time.time;
+        return;
     }
+
+    // fallback: spawnPoint 위치
+    GameObject fallbackPrefab = spawnQueue.Dequeue();
+    foodInScene++;
+    Instantiate(fallbackPrefab, spawnPoint.position, Quaternion.identity);
+    lastDequeueTime = Time.time;
+}
 }
