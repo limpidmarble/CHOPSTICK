@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f7048fda45fc6414ebf4a2e6d218ed72
+guid: 46cff70160d75b7489e455408478b104
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -108,12 +108,72 @@ TextureImporter:
         width: 1494
         height: 892
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      physicsShape:
+      - - {x: 48, y: -445}
+        - {x: 98, y: -441}
+        - {x: 235, y: -413}
+        - {x: 275, y: -399}
+        - {x: 354, y: -357}
+        - {x: 470, y: -283}
+        - {x: 536, y: -223}
+        - {x: 571, y: -178}
+        - {x: 655, y: -161}
+        - {x: 679, y: -147}
+        - {x: 699, y: -115}
+        - {x: 709, y: -63}
+        - {x: 709, y: 14}
+        - {x: 707, y: 54}
+        - {x: 702, y: 79}
+        - {x: 698, y: 102}
+        - {x: 672, y: 135}
+        - {x: 645, y: 147}
+        - {x: 599, y: 160}
+        - {x: 572, y: 164}
+        - {x: 450, y: 288}
+        - {x: 415, y: 313}
+        - {x: 344, y: 361}
+        - {x: 302, y: 384}
+        - {x: 248, y: 405}
+        - {x: 193, y: 424}
+        - {x: 131, y: 435}
+        - {x: 30, y: 445}
+        - {x: -33, y: 445}
+        - {x: -61, y: 444}
+        - {x: -168, y: 429}
+        - {x: -197, y: 422}
+        - {x: -228, y: 416}
+        - {x: -302, y: 390}
+        - {x: -367, y: 361}
+        - {x: -448, y: 314}
+        - {x: -501, y: 267}
+        - {x: -589, y: 176}
+        - {x: -641, y: 172}
+        - {x: -691, y: 154}
+        - {x: -713, y: 137}
+        - {x: -721, y: 125}
+        - {x: -725, y: 108}
+        - {x: -733, y: 35}
+        - {x: -734, y: 1}
+        - {x: -734, y: -84}
+        - {x: -725, y: -113}
+        - {x: -696, y: -141}
+        - {x: -649, y: -158}
+        - {x: -611, y: -165}
+        - {x: -575, y: -190}
+        - {x: -559, y: -211}
+        - {x: -509, y: -267}
+        - {x: -446, y: -317}
+        - {x: -366, y: -364}
+        - {x: -336, y: -378}
+        - {x: -295, y: -397}
+        - {x: -219, y: -420}
+        - {x: -83, y: -446}
+        - {x: 9, y: -446}
+      tessellationDetail: 0.075
       bones: []
       spriteID: b2daa7be0c7ecb410800000000000000
       internalID: 1494323992150584619
@@ -125,7 +185,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c968f0c2f7181864c84c48e5be59ccce
     internalID: 0
     vertices: []
     indices: 

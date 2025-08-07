@@ -15,7 +15,7 @@ MonoBehaviour:
   foodName: Blackburger
   sprite: {fileID: 3654720709151906280, guid: 6f115b03c375cbd45aed163546e1ec56, type: 3}
   score: 100
-  mass: 1000
+  mass: 200
   fullnessValue: 100
   rarity: 0
-  friction: 1
+  friction: 2

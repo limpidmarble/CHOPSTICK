@@ -84,8 +84,8 @@ GameObject:
   - component: {fileID: 3344787396985304838}
   - component: {fileID: 8599771192414998019}
   - component: {fileID: 8576599830550415099}
-  - component: {fileID: 6591941159609049717}
   - component: {fileID: 6351873535275377522}
+  - component: {fileID: 6591941159609049717}
   m_Layer: 0
   m_Name: Pancake
   m_TagString: Target
@@ -103,8 +103,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.1, y: 5.47, z: 0}
-  m_LocalScale: {x: 0.24120794, y: 0.24120794, z: 0.24120794}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7287055522355297542}
   m_Father: {fileID: 0}
@@ -191,19 +191,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6591941159609049717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7472266777102536734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff58e29b71c90da4a881a1fd47fed236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 30e547e8e0ea550408ae23a14d6430f0, type: 2}
 --- !u!60 &6351873535275377522
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -296,3 +283,16 @@ PolygonCollider2D:
       - {x: -0.11, y: -5.1749997}
       - {x: 1.7099999, y: -5.1749997}
   m_UseDelaunayMesh: 0
+--- !u!114 &6591941159609049717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472266777102536734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff58e29b71c90da4a881a1fd47fed236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 30e547e8e0ea550408ae23a14d6430f0, type: 2}

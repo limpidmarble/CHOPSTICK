@@ -10,7 +10,7 @@ public class Food : MonoBehaviour
         // Sprite 적용
         GetComponent<SpriteRenderer>().sprite = data.sprite;
         // 질량 적용
-        GetComponent<Rigidbody2D>().mass = data.mass;
+        GetComponent<Rigidbody2D>().mass = Mathf.Ceil(data.mass * 0.7f);
         // 마찰 적용
         var col = GetComponent<Collider2D>();
         if (col != null)
@@ -26,12 +26,5 @@ public class Food : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Target"))
-        {
-            GameManager.instance.IncreaseFullness(data.fullnessValue, transform.position, data.score);
-            Destroy(gameObject);
-        }
-    }
+
 }

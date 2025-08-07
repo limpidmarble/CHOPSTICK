@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 630c393761e229940ba43b8dc71a68fd
+guid: a5fe180c46b581b49a4ccd5bb76ead14
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3628358943730790583
-    second: Goldenburger_0
+      213: 4646649027328027380
+    second: Egg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,93 +100,51 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Goldenburger_0
+      name: Egg_0
       rect:
         serializedVersion: 2
-        x: 202
-        y: 50
-        width: 911
-        height: 786
+        x: 10
+        y: 11
+        width: 240
+        height: 312
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape:
-      - - {x: 118.5, y: -386}
-        - {x: 212.5, y: -367}
-        - {x: 278.5, y: -342}
-        - {x: 313.5, y: -293}
-        - {x: 327.5, y: -296}
-        - {x: 333.5, y: -276}
-        - {x: 311.5, y: -237}
-        - {x: 324.5, y: -199}
-        - {x: 298.5, y: -136}
-        - {x: 270.5, y: -96}
-        - {x: 273.5, y: -19}
-        - {x: 292.5, y: -15}
-        - {x: 318.5, y: -4}
-        - {x: 334.5, y: 18}
-        - {x: 405.5, y: -65}
-        - {x: 420.5, y: -60}
-        - {x: 438.5, y: -35}
-        - {x: 454.5, y: 5}
-        - {x: 454.5, y: 15}
-        - {x: 449.5, y: 50}
-        - {x: 454.5, y: 61}
-        - {x: 454.5, y: 95}
-        - {x: 430.5, y: 125}
-        - {x: 421.5, y: 133}
-        - {x: 374.5, y: 193}
-        - {x: 339.5, y: 193}
-        - {x: 319.5, y: 174}
-        - {x: 288.5, y: 180}
-        - {x: 319.5, y: 194}
-        - {x: 315.5, y: 241}
-        - {x: 299.5, y: 288}
-        - {x: 278.5, y: 318}
-        - {x: 216.5, y: 363}
-        - {x: 161.5, y: 381}
-        - {x: 46.5, y: 387}
-        - {x: -1.5, y: 392}
-        - {x: -74.5, y: 392}
-        - {x: -170.5, y: 386}
-        - {x: -202.5, y: 378}
-        - {x: -279.5, y: 340}
-        - {x: -307.5, y: 314}
-        - {x: -339.5, y: 270}
-        - {x: -368.5, y: 168}
-        - {x: -378.5, y: 174}
-        - {x: -392.5, y: 172}
-        - {x: -437.5, y: 118}
-        - {x: -445.5, y: 97}
-        - {x: -454.5, y: 49}
-        - {x: -454.5, y: 7}
-        - {x: -453.5, y: 0}
-        - {x: -454.5, y: -9}
-        - {x: -454.5, y: -33}
-        - {x: -392.5, y: -42}
-        - {x: -374.5, y: -52}
-        - {x: -353.5, y: -43}
-        - {x: -316.5, y: -35}
-        - {x: -315.5, y: -56}
-        - {x: -308.5, y: -79}
-        - {x: -355.5, y: -161}
-        - {x: -369.5, y: -198}
-        - {x: -370.5, y: -204}
-        - {x: -352.5, y: -226}
-        - {x: -329.5, y: -244}
-        - {x: -332.5, y: -286}
-        - {x: -315.5, y: -334}
-        - {x: -300.5, y: -347}
-        - {x: -273.5, y: -360}
-        - {x: -201.5, y: -381}
-        - {x: -105.5, y: -392}
-        - {x: 23.5, y: -392}
-      tessellationDetail: 0.092
+      - - {x: 30, y: -154}
+        - {x: 45, y: -148}
+        - {x: 73, y: -133}
+        - {x: 97, y: -105}
+        - {x: 111, y: -81}
+        - {x: 120, y: -46}
+        - {x: 120, y: 0}
+        - {x: 117, y: 24}
+        - {x: 107, y: 62}
+        - {x: 82, y: 109}
+        - {x: 48, y: 141}
+        - {x: 30, y: 151}
+        - {x: 13, y: 155}
+        - {x: -13, y: 155}
+        - {x: -21, y: 154}
+        - {x: -46, y: 144}
+        - {x: -72, y: 119}
+        - {x: -92, y: 91}
+        - {x: -115, y: 41}
+        - {x: -120, y: 9}
+        - {x: -120, y: -50}
+        - {x: -111, y: -79}
+        - {x: -100, y: -101}
+        - {x: -86, y: -118}
+        - {x: -71, y: -133}
+        - {x: -50, y: -147}
+        - {x: -24, y: -155}
+        - {x: 20, y: -155}
+      tessellationDetail: 0.147
       bones: []
-      spriteID: 7b07fa64c358a5230800000000000000
-      internalID: 3628358943730790583
+      spriteID: 4fa2dcddba63c7040800000000000000
+      internalID: 4646649027328027380
       vertices: []
       indices: 
       edges: []
@@ -195,7 +153,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6382e43076b41ee459761551896e7387
+    spriteID: 2e90e252ec148db448faaff16199230a
     internalID: 0
     vertices: []
     indices: 
@@ -205,7 +163,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Goldenburger_0: 3628358943730790583
+      Egg_0: 4646649027328027380
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f21cbb1e101fbfd428a5e61d1e85a71b, type: 3}
-  m_Name: XLPizza
+  m_Name: Shoes
   m_EditorClassIdentifier: 
-  foodName: XLPizza
-  sprite: {fileID: -3592930257141393778, guid: 4a69937c88b8cec4b898333d2472cd4f, type: 3}
-  score: 50
-  mass: 100
-  fullnessValue: 50
+  foodName: Shoes
+  sprite: {fileID: 2371641743025836735, guid: 56e0f79fde3a17d448a2d71c9ec18816, type: 3}
+  score: 1
+  mass: 80
+  fullnessValue: 0
   rarity: 0
-  friction: 1
+  friction: 2

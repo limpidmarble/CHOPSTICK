@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pasta
   m_EditorClassIdentifier: 
   foodName: Pasta
-  sprite: {fileID: 1494323992150584619, guid: f7048fda45fc6414ebf4a2e6d218ed72, type: 3}
+  sprite: {fileID: 1494323992150584619, guid: 46cff70160d75b7489e455408478b104, type: 3}
   score: 20
   mass: 50
   fullnessValue: 25
