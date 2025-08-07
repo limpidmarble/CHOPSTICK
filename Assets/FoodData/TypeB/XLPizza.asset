@@ -15,7 +15,8 @@ MonoBehaviour:
   foodName: XLPizza
   sprite: {fileID: -3592930257141393778, guid: 4a69937c88b8cec4b898333d2472cd4f, type: 3}
   score: 50
-  mass: 100
+  mass: 300
   fullnessValue: 50
   rarity: 2
   friction: 1
+  bounciness: 0
