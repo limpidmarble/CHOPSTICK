@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Stick
   - Target
+  - IButton
+  - Table
   layers:
   - Default
   - TransparentFX
