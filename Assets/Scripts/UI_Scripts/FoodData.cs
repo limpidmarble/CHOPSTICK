@@ -10,7 +10,9 @@ public class FoodData : ScriptableObject
     public float fullnessValue;
     public FoodRarity rarity;
     public FoodFriction friction;
+    public FoodBounciness bounciness;
 }
 
 public enum FoodRarity { Common, Uncommon, Rare, Epic }
 public enum FoodFriction { Low, Medium, High }
+public enum FoodBounciness { None, Low, Medium, High }

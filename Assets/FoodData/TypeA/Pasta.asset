@@ -19,3 +19,4 @@ MonoBehaviour:
   fullnessValue: 25
   rarity: 1
   friction: 1
+  bounciness: 1
