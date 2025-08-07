@@ -15,6 +15,8 @@ public class FaceController : MonoBehaviour
 
     public void UpdateFace(float fullness, float maxFullness)
     {
+        if (eatRoutine != null) return; // 먹는 중이면 얼굴 업데이트 금지
+
         float percent = fullness / maxFullness;
         if (percent >= 0.7f)
             faceRenderer.sprite = face_full;
@@ -26,25 +28,33 @@ public class FaceController : MonoBehaviour
 
     public void PlayEatAnimation()
     {
-        if (eatRoutine != null) StopCoroutine(eatRoutine);
+        if (eatRoutine != null) return; // 이미 애니메이션 중이면 무시
         eatRoutine = StartCoroutine(EatAnim());
     }
 
     IEnumerator EatAnim()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            faceRenderer.sprite = face_eat_1;
-            yield return new WaitForSeconds(0.1f);
-            faceRenderer.sprite = face_eat_2;
-            yield return new WaitForSeconds(0.1f);
-        }
-        UpdateFace(GameManager.instance.CurrentFullness, GameManager.instance.maxFullness);
-    }
+{
+    // 더 빠르게: 입 벌림 → 씹기 → 입 다물기 → 씹기 → 원래 얼굴
+    faceRenderer.sprite = face_eat_1;
+    yield return new WaitForSeconds(0.25f);
+
+    faceRenderer.sprite = face_eat_2;
+    yield return new WaitForSeconds(0.33f);
+
+    faceRenderer.sprite = face_eat_1;
+    yield return new WaitForSeconds(0.25f);
+
+    faceRenderer.sprite = face_eat_2;
+    yield return new WaitForSeconds(0.33f);
+
+    UpdateFace(GameManager.instance.CurrentFullness, GameManager.instance.maxFullness);
+    eatRoutine = null;
+}
 
     public void SetGameOverFace()
     {
         if (eatRoutine != null) StopCoroutine(eatRoutine);
+        eatRoutine = null;
         faceRenderer.sprite = face_over;
     }
 }
