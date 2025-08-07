@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class ScoreManager : MonoBehaviour
     {
         int i = 1;
         string prefKey;
+        int lastScore = 0;
+        int lastRank = 1;
         List<int> scores = new List<int>();
 
         while (i <= 101)
@@ -24,6 +27,7 @@ public class ScoreManager : MonoBehaviour
             if (PlayerPrefs.HasKey(prefKey))
             {
                 scores.Add(PlayerPrefs.GetInt(prefKey));
+                lastScore = PlayerPrefs.GetInt(prefKey);
                 i++;
             }
             else
@@ -32,8 +36,22 @@ public class ScoreManager : MonoBehaviour
             }
         }
 
-        
-        
+        var sortedScores = scores.OrderByDescending(x => x).ToList();
+
+        for (int j = 0; j < sortedScores.Count; j++)
+        {
+            if (sortedScores[j] == lastScore)
+            {
+                lastRank = i + 1;
+                break;
+            }
+        }
+
+        firstScore.text = $"{sortedScores[0]}";
+        secondScore.text = $"{sortedScores[1]}";
+        thirdScore.text = $"{sortedScores[2]}";
+        newRank.text = $"{lastRank}" + ".";
+        newScore.text = $"{lastScore}";
 
     }
 
