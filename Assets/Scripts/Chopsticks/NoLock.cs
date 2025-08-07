@@ -51,9 +51,17 @@ public class NoLock : MonoBehaviour
 
     bool axis_width_decreased = false; // 왼/오 젓가락 스프라이트의 너비가 감소했는지 여부를 나타내는 변수입니다. true면 감소했고, false면 증가했습니다.
 
+    public AudioSource audioSource;
+    public AudioClip short_tap;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
         Application.targetFrameRate = 60; // 최대 60프레임으로 제한
 
         Cursor.visible = false;

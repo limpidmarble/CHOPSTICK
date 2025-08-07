@@ -33,9 +33,16 @@ public class RigidChopstickStick : MonoBehaviour
 
     public float vertical_force; // 일종의 젓가락의 수직 방향 오프셋? 꽃히는 로직 구현할 때 사용. 실제로 움직일 때 속도 값이기도 하고 물체에 대고 커서를 물체 쪽으로 가까이 할 때도 절댓값이 늘어남.
 
+    public AudioSource audioSource;
+    public AudioClip short_tap;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         return_speed = 1000f; // 초기 속도를 설정합니다.
 
 
@@ -55,6 +62,8 @@ public class RigidChopstickStick : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        audioSource.PlayOneShot(short_tap);
+
         if (collision.gameObject.CompareTag("Stick"))
         {
             is_touching_stick = true; // 다른 젓가락과 닿아있으면 true로 설정합니다.

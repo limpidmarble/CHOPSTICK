@@ -7,6 +7,9 @@ public class TitleInteractable : MonoBehaviour
     public Sprite fullSceneSprite;
     public Sprite holeSceneSprite;
 
+    public AudioManager audioManager;
+
+
     public GameObject gameStart;
 
     Rigidbody2D startRigidbody;
@@ -62,9 +65,11 @@ public class TitleInteractable : MonoBehaviour
             startRigidbody.MoveRotation(angle);
             if (Vector2.Distance(startRigidbody.position, originalStartPosition) < 0.01f && Mathf.Abs(Mathf.DeltaAngle(startRigidbody.rotation, 0)) < 0.5f)
             {
+                audioManager.SlideIn();
                 spriteRenderer.sprite = fullSceneSprite;
-            reachedOriginalPosition = true;
-            SceneManager.LoadScene("MainGame");
+                WaitAndLoad(0.5f);
+                reachedOriginalPosition = true;
+                SceneManager.LoadScene("MainGame");
             }
         }
 
@@ -76,6 +81,12 @@ public class TitleInteractable : MonoBehaviour
         // waitTime 초 동안 대기
         yield return new WaitForSeconds(waitTime);
         canStart = true;
+    }
+
+    IEnumerator WaitAndLoad(float t)
+    {
+        yield return new WaitForSeconds(t);
+
     }
         
 }
