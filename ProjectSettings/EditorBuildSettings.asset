@@ -17,13 +17,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestSJ.unity
     guid: a93ddf216a964c84f842cbc4966751a5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestJW.unity
     guid: 334bdfb8b8d62be41b36d203ffe005b3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Title.unity
     guid: 2968711a56686ec4d9e1164e5a3f77ed
   m_configObjects:
