@@ -15,7 +15,7 @@ MonoBehaviour:
   foodName: Pizza
   sprite: {fileID: -3592930257141393778, guid: 62a32b3a9c99ed0459b7e32ff8d0d473, type: 3}
   score: 15
-  mass: 50
+  mass: 30
   fullnessValue: 25
   rarity: 1
   friction: 1

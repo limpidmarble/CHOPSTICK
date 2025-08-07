@@ -52,37 +52,7 @@ public class GameManager : MonoBehaviour
     {
         updateTimer = 0f;
 
-        float decreasePerSecond = 2f;
-
-        if (elapsedTime < 15f)
-        {
-            decreasePerSecond = 2f;
-        }
-        else if (elapsedTime < 45f)
-        {
-            // 15~45초: 2 → 4 선형 증가
-            float t = (elapsedTime - 15f) / (45f - 15f);
-            decreasePerSecond = Mathf.Lerp(2f, 4f, t);
-        }
-
-        else if (elapsedTime < 90f)
-        {
-            // 45~90초: 4 → 6 선형 증가
-            float t = (elapsedTime - 45f) / (90f - 45f);
-            decreasePerSecond = Mathf.Lerp(4f, 6f, t);
-        }
-        else if (elapsedTime < 150f)
-        {
-            // 90~150초: 6 → 9 선형 증가
-            float t = (elapsedTime - 90f) / (150f - 90f);
-            decreasePerSecond = Mathf.Lerp(6f, 9f, t);
-        }
-        else
-        {
-            // 150초 이후: 8에서 15까지 2분간 선형 증가, 이후 15 고정
-            float t = Mathf.Min((elapsedTime - 150f) / 120f, 1f);
-            decreasePerSecond = Mathf.Lerp(8f, 15f, t);
-        }
+        float decreasePerSecond = Mathf.Min(elapsedTime * 0.25f + 2f, 12f);
 
         float decreaseAmount = decreasePerSecond * updateInterval;
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   foodName: Chiken
   sprite: {fileID: -3905209423568222991, guid: 6faf47454bdf3014b960dfbf85ed1d99, type: 3}
   score: 15
-  mass: 40
+  mass: 25
   fullnessValue: 20
   rarity: 1
   friction: 1

@@ -670,13 +670,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249896068}
-  m_LocalRotation: {x: -0, y: -0, z: -0.836273, w: 0.5483133}
+  m_LocalRotation: {x: -0, y: -0, z: -0.6847054, w: 0.72881997}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7938349, y: 0.96512234, z: 1.2014469}
+  m_LocalScale: {x: 1.9999715, y: 1.3560559, z: 1.3753515}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1315953895}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -113.497}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -86.425}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.5, y: -1.8}
@@ -702,7 +702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5378352612430853706, guid: 81bb45e8505d0e6479dc19a8c76ea511, type: 3}
+  m_Sprite: {fileID: -3905209423568222991, guid: 6faf47454bdf3014b960dfbf85ed1d99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1105,7 +1105,7 @@ MonoBehaviour:
   minFoodCount: 3
   spawnPoint: {fileID: 1923951678}
   foodInScene: 0
-  dequeueInterval: 5
+  dequeueInterval: 2
   spawnCheckBox: {fileID: 1923951679}
 --- !u!1 &1741842391
 GameObject:

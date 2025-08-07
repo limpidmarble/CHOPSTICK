@@ -15,7 +15,7 @@ MonoBehaviour:
   foodName: Pasta
   sprite: {fileID: 1494323992150584619, guid: 46cff70160d75b7489e455408478b104, type: 3}
   score: 20
-  mass: 50
+  mass: 30
   fullnessValue: 25
   rarity: 1
   friction: 1

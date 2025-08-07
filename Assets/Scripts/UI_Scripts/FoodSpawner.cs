@@ -83,14 +83,14 @@ public class FoodSpawner : MonoBehaviour
         GameObject prefabToEnqueue = null;
         float rand = Random.value;
 
-        if (t <= 45f)
+        if (t <= 15f)
             prefabToEnqueue = GetRandomByRarity(typeAPrefabs);
-        else if (t <= 90f)
-            prefabToEnqueue = (rand < 0.95f) ? GetRandomByRarity(typeAPrefabs) : GetRandomByRarity(typeBPrefabs);
-        else if (t <= 150f)
+        else if (t <= 30f)
             prefabToEnqueue = (rand < 0.9f) ? GetRandomByRarity(typeAPrefabs) : GetRandomByRarity(typeBPrefabs);
-        else
+        else if (t <= 45f)
             prefabToEnqueue = (rand < 0.8f) ? GetRandomByRarity(typeAPrefabs) : GetRandomByRarity(typeBPrefabs);
+        else
+            prefabToEnqueue = (rand < 0.7f) ? GetRandomByRarity(typeAPrefabs) : GetRandomByRarity(typeBPrefabs);
 
         if (prefabToEnqueue != null)
             spawnQueue.Enqueue(prefabToEnqueue);

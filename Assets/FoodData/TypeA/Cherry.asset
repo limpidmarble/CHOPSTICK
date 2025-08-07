@@ -15,7 +15,7 @@ MonoBehaviour:
   foodName: 
   sprite: {fileID: 8790145991630729769, guid: b26ce9a1b108f0744af1c0ce9c2d5d48, type: 3}
   score: 4
-  mass: 20
+  mass: 15
   fullnessValue: 10
   rarity: 0
   friction: 1

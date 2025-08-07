@@ -15,7 +15,7 @@ MonoBehaviour:
   foodName: Hamburger
   sprite: {fileID: 3621881966847017282, guid: d733058c9a93d8249b06cadd1adb2b8c, type: 3}
   score: 20
-  mass: 100
+  mass: 40
   fullnessValue: 30
   rarity: 0
   friction: 1
