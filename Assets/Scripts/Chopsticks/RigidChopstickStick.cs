@@ -113,9 +113,6 @@ public class RigidChopstickStick : MonoBehaviour
             Physics2D.IgnoreCollision(other_actual_collider, actual_collider, false); // 충돌을 무시하지 않습니다.
 
         }
-
-
-
         Vector3 target_position = stick_target.position; // 돌아가는 목표 위치입니다.
         Vector3 direction = target_position - transform.position;
         velocity = direction * return_speed * Time.fixedDeltaTime;
